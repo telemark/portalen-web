@@ -1,0 +1,9 @@
+@import "../../sass/globals";
+
+.box {
+  background: $color-danger;
+  border-radius: 3px;
+  padding: 1 * $unit;
+  color: #fff;
+  margin-bottom: 2 * $unit;
+}

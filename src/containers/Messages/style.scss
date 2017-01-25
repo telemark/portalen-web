@@ -1,0 +1,77 @@
+@import "../../sass/globals";
+@import "../../sass/mixin";
+
+.itemTitle {
+  font-size: 1.8 * $unit;
+  line-height: 2 * $unit;
+  margin: 0;
+  font-weight: bold;
+}
+
+.listContainer,
+.listContainerTight {
+  display: flex;
+  min-height: 7.2rem;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding-top: 1 * $unit;
+  padding-bottom: 1 * $unit;
+}
+.listContainerTight {
+  min-height: 0rem;
+  padding-bottom: 0;
+}
+.listContainerAdd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding-bottom: 10px;
+}
+.btnBlock {
+  display: block;
+  width: 100%;
+}
+.checkbox {
+  display: inline-block;
+}
+.dropdown > * {
+  padding: 0;
+}
+.dropdown input {
+  border-bottom: none;
+}
+.preview {
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  padding: 2 * $unit;
+  position: relative;
+}
+.previewTitle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ccc;
+  font-size: 1 * $unit;
+  padding: 5px 10px;
+}
+.content {
+  white-space: normal;
+}
+
+.cardList {
+  li > span {
+    align-items: flex-start;
+    & > div {
+      /* Fix ie overflow */
+      flex: 1;
+    }
+  }
+}
+.htmlWrapper {
+  ul,
+  ol {
+    margin-left: 1em;
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../sass/globals";
+@import "../../sass/mixin";
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 5 * $unit 2 * $unit;
+  background: $tfk-yellow;
+}
+.container > * {
+  width: 100%;
+}

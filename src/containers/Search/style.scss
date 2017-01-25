@@ -1,0 +1,18 @@
+@import "../../sass/globals";
+
+.info {
+  font-size: 1.8 * $unit;
+  color: #999;
+  display: block;
+  padding-top: 1 * $unit;
+}
+
+.navigation {
+  margin-bottom: 2 * $unit;
+}
+
+.navigationItem {
+  display: inline-block;
+  margin-right: 1 * $unit;
+  margin-bottom: 1 * $unit;
+}

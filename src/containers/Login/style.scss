@@ -1,0 +1,29 @@
+@import "../../sass/globals";
+
+.container {
+  max-width: 35 * $unit;
+  margin: 0 auto;
+}
+
+.logoHolder {
+  text-align: center;
+  margin-bottom: 2 * $unit
+}
+
+.logo {
+  height: 6 * $unit;
+  width: auto;
+  margin-right: 1.5 * $unit;
+}
+
+.title {
+  font-size: 2.5 * $unit;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button {
+  font-size: 1.5 * $unit;
+  display: block;
+  width: 100%;
+}
