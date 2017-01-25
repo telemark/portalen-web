@@ -1,5 +1,5 @@
 mongoserver:
-  image: mongo:3.2.1
+  image: mongo:3.4.1
 
 services_base:
   image: telemark/tfk-seneca-base
