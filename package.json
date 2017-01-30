@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "Forside for portalen",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "private": true,
   "author": "Telemark Fylkeskommune (http://github.com/telemark)",
