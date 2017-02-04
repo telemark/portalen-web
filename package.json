@@ -190,7 +190,7 @@
     "tap": "9.0.3",
     "toolbox-loader": "0.0.3",
     "url-loader": "0.5.7",
-    "webpack": "1.14.0",
+    "webpack": "2.2.1",
     "webpack-dev-middleware": "1.9.0",
     "webpack-hot-middleware": "2.16.0"
   },
