@@ -2,6 +2,8 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 # portalen-web
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/portalen-web.svg)](https://greenkeeper.io/)
 web frontend for portalen
 
 ## Installasjon
