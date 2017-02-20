@@ -158,7 +158,7 @@
     "wreck": "10.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "6.7.2",
+    "autoprefixer": "6.7.4",
     "babel-eslint": "7.1.1",
     "babel-loader": "6.2.10",
     "babel-plugin-react-transform": "2.0.2",
