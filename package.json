@@ -165,7 +165,7 @@
     "babel-plugin-typecheck": "3.9.0",
     "clean-webpack-plugin": "0.1.15",
     "css-loader": "0.26.1",
-    "eslint": "3.16.0",
+    "eslint": "3.16.1",
     "eslint-config-standard": "6.2.1",
     "eslint-config-standard-react": "4.2.0",
     "eslint-loader": "1.6.3",
