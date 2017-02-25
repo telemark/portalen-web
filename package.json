@@ -175,7 +175,7 @@
     "eslint-plugin-standard": "2.0.1",
     "express": "4.14.1",
     "extract-text-webpack-plugin": "1.0.1",
-    "file-loader": "0.10.0",
+    "file-loader": "0.10.1",
     "json-loader": "0.5.4",
     "node-sass": "4.5.0",
     "nsp": "2.6.2",
