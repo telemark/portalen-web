@@ -1,19 +1,15 @@
 'use strict'
 
+import {fetchUrl} from '../helpers/fetch'
 const Boom = require('boom')
 
-function links (request, reply) {
-  var pattern = {cmd: 'collect-links', type: 'user'}
-  var roles = request.query.roles.split(',')
-  var payload = {roles: roles}
+module.exports.links = (request, reply) => {
+  const roles = request.query.roles.split(',').join('|')
 
-  request.seneca.act(pattern, payload, function (error, data) {
-    if (error) {
-      return reply(Boom.internal(error))
-    } else {
-      return reply(data)
-    }
+  const url = `https://links.portalen.t-fk.win/links?roles=${roles}`
+  fetchUrl(url).then((data) => {
+    return reply(data)
+  }).catch((error) => {
+    return reply(Boom.internal(error))
   })
 }
-
-module.exports.links = links
