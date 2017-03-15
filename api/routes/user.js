@@ -3,6 +3,36 @@ import shortid from 'shortid'
 import {fetchUrl, makeUrl} from '../helpers/fetch'
 import config from '../../src/config'
 import configLDAP from '../../src/configLDAP'
+import verifySigninJwt from '../../src/lib/verify-signin-jwt'
+
+function signin (request, reply) {
+  const token = request.query.jwt
+  verifySigninJwt(token).then(data => {
+    const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), data)
+    fetchUrl(makeUrlFunc(config.api.userRoles))
+      .then((roles) => {
+        data.roles = roles
+        data.rolesJoined = roles.join()
+        const token = jwt.sign(data, config.tokenSecret, {
+          expiresIn: `${config.sessionTimeoutDays} days`
+        })
+        const sid = shortid.generate()
+        request.server.app.cache.set(sid, {token: token}, 0, (err) => {
+          if (err) {
+            return reply(err)
+          }
+          request.cookieAuth.set({sid: sid})
+          reply(data)
+        })
+      })
+      .catch((err) => {
+        reply(err)
+      })
+  }).catch(error => {
+    console.error(error)
+    reply({error: error.name || JSON.stringify(error)}).code(500)
+  })
+}
 
 function login (request, reply) {
   const payload = request.payload
@@ -91,6 +121,7 @@ const User = {
   login,
   logout,
   loadAuth,
-  requireAuth
+  requireAuth,
+  signin
 }
 export default User

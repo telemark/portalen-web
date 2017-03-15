@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "Forside for portalen",
-  "version": "1.0.23",
+  "version": "1.1.0",
   "license": "MIT",
   "private": true,
   "author": "Telemark Fylkeskommune (http://github.com/telemark)",
@@ -151,6 +151,7 @@
     "seneca-mesh": "0.10.0",
     "serialize-javascript": "1.3.0",
     "shortid": "2.2.8",
+    "simple-encryptor": "1.1.0",
     "string-template": "1.0.0",
     "superagent": "3.5.0",
     "valid-url": "1.0.9",

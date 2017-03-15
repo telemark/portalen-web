@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/telemark/portalen-web.svg?branch=master)](https://travis-ci.org/telemark/portalen-web)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/portalen-web.svg)](https://greenkeeper.io/)
 
 # portalen-web
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/portalen-web.svg)](https://greenkeeper.io/)
 web frontend for portalen
 
 ## Installasjon
@@ -43,7 +43,6 @@ Det benyttes en del mikrotjenester basert på rammeverket Seneca.
 - [portalen-content](https://github.com/telemark/portalen-content)
 - [portalen-collector-ads](https://github.com/telemark/portalen-collector-ads)
 - [portalen-collector-news](https://github.com/telemark/portalen-collector-news)
-- [portalen-links](https://github.com/telemark/portalen-links)
 
 tfk-seneca-base må startes først og deretter de andre
 
@@ -51,4 +50,4 @@ tfk-seneca-base må startes først og deretter de andre
 
 [MIT](LICENSE)
 
-![alt text](https://robots.kebabstudios.party/portalen-web.png "Robohash image of portalen-web")
+![Robohash image of portalen-web](https://robots.kebabstudios.party/portalen-web.png "Robohash image of portalen-web")

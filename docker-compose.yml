@@ -15,13 +15,6 @@ services_ping:
   restart: always
   net: container:portalen_web
 
-portalen_links:
-  image: telemark/portalen-links
-  container_name: portalen_links
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
 portalen_collector_ads:
   image: telemark/portalen-collector-ads
   container_name: portalen_collector_ads
