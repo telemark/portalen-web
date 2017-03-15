@@ -166,7 +166,7 @@
     "clean-webpack-plugin": "0.1.16",
     "css-loader": "0.27.3",
     "eslint": "3.16.1",
-    "eslint-config-standard": "6.2.1",
+    "eslint-config-standard": "8.0.0-beta.1",
     "eslint-config-standard-react": "4.2.0",
     "eslint-loader": "1.6.3",
     "eslint-plugin-import": "2.2.0",
