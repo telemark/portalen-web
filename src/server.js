@@ -108,6 +108,13 @@ server.ext('onPreResponse', (request, reply) => {
       return hydrateOnClient()
     } else if (renderProps) {
       loadOnServer({...renderProps, store, helpers: {client}}).then(() => {
+        /*
+        const {auth: {user}} = store.getState()
+        if (!user) {
+          const authUrl = `${config.authServiceUrl}?origin=${config.originUrl}`
+          reply.redirect(authUrl)
+        }
+        */
         const component = (
           <Provider store={store} key='provider'>
             <ReduxAsyncConnect {...renderProps} />
