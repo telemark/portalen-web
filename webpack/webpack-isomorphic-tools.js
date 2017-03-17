@@ -27,7 +27,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     style_modules: {
-      extensions: ['scss', 'css'],
+      extensions: ['css'],
       filter: function (module, regex, options, log) {
         if (process.env.NODE_ENV !== 'production') {
           // in development mode there's webpack "style-loader",

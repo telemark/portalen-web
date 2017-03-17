@@ -1,0 +1,15 @@
+@import "../../global.css";
+.info {
+  font-size: calc(1.8 * var(--unit));
+  color: #999;
+  display: block;
+  padding-top: calc(1 * var(--unit));
+}
+.navigation {
+  margin-bottom: calc(2 * var(--unit));
+}
+.navigationItem {
+  display: inline-block;
+  margin-right: calc(1 * var(--unit));
+  margin-bottom: calc(1 * var(--unit));
+}

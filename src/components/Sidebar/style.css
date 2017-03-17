@@ -1,0 +1,20 @@
+@import "../../global.css";
+.container {
+  padding-bottom: 0;
+}
+.link {
+  display: inline-block;
+  padding-top: calc(.5 * var(--unit));
+  padding-bottom: calc(.5 * var(--unit));
+  color: var(--tfk-text-color);
+}
+.linkContainer {
+  position: relative;
+  text-align: left;
+  margin-bottom: calc(.5 * var(--unit));
+}
+.actionContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

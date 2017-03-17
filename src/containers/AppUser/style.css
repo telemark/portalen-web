@@ -1,88 +1,80 @@
-@import "../../sass/globals";
-@import "./config";
-
+@import "../../global.css";
+:root {
+  --appbar-height: calc(6.4 * var(--unit));
+  --appbar-logo-size: calc(3.6 * var(--unit));
+  --appbar-shadow: 0 1px rgba(255,255,255,.65);
+  --appbar-navigation-offset: calc(6.5 * var(--unit));
+}
 .container {
   height: 100%;
   width: 100%;
 }
-
 .appbar {
-  z-index: $z-index-higher;
-  min-height: $appbar-height;
-  background: $tfk-yellow;
-  color: $tfk-black;
+  z-index: var(--z-index-higher);
+  min-height: var(--appbar-height);
+  background: var(--tfk-yellow);
+  color: var(--tfk-black);
 }
-
 .appBarButton {
-  color: $tfk-black;
+  color: var(--tfk-black);
 }
-
 .logoHolder {
   display: inline-block;
-  line-height: $appbar-height;
-  margin-left: 1 * $unit;
+  line-height: var(--appbar-height);
+  margin-left: calc(1 * var(--unit));
 }
-
 .logoText {
   display: inline-block;
-  color: $tfk-black;
-  font-size: 1.6 * $unit;
-  line-height: $appbar-height;
+  color: var(--tfk-black);
+  font-size: calc(1.6 * var(--unit));
+  line-height: var(--appbar-height);
   font-weight: bold;
 }
-
 .logo {
-  width: $appbar-logo-size;
+  width: var(--appbar-logo-size);
   height: auto;
   vertical-align: middle;
-  margin-right: 1 * $unit;
+  margin-right: calc(1 * var(--unit));
 }
-
 .layout {
   height: auto;
   min-height: 100%;
 }
-
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .layout {
     height: 100%;
   }
 }
-
 .panel {
   flex: 1;
   overflow-y: auto;
-  padding: 2 * $unit;
+  padding: calc(2 * var(--unit));
 }
-
 @media screen and (max-width: 767px) {
   .panel {
-    padding: 2 * $unit 0;
+    padding: calc(2 * var(--unit)) 0;
   }
 }
-
 .sidebar {
   flex: 1;
   overflow-y: auto;
-  padding: 1 * $unit;
+  padding: calc(1 * var(--unit));
 }
-
 .navigation {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 .form {
-  width: 25 * $unit;
+  width: calc(25 * var(--unit));
   display: flex;
   align-items: right;
-  flex: 1 1 25 * $unit;
+  flex: 1 1 calc(25 * var(--unit));;
   margin-left: auto;
   div {
     width: 100%
   }
 }
-
 .menu {
   position: relative;
   z-index: 10000;
@@ -93,7 +85,6 @@
   align-items: center;
   width: 100%;
 }
-
 @media screen and (max-width: 767px) {
   .form {
     width: auto;
@@ -102,7 +93,6 @@
     display: none;
   }
 }
-
 .searchInput {
   label {
     color: #000 !important;

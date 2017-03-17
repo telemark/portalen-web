@@ -1,8 +1,7 @@
-@import "../../sass/globals";
-
+@import "../../global.css";
 .box {
   color: #fff;
-  margin: 1 * $unit 0;
+  margin: calc(1 * var(--unit));
   text-align: left;
 }
 .text {

@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, CardText, FontIcon} from 'react-toolbox'
+import FontIcon from 'react-toolbox/lib/font_icon'
+import {Card, CardText} from 'react-toolbox/lib/card'
 import style from './style'
 
 const CardLink = ({url, title, description, icon = 'link', className = ''}) => {

@@ -1,0 +1,8 @@
+@import "../../global.css";
+.box {
+  background: var(--color-danger);
+  border-radius: 3px;
+  padding: calc(1 * var(--unit));
+  color: #fff;
+  margin-bottom: calc(2 * var(--unit));
+}

@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, CardText, CardTitle, CardActions, Button} from 'react-toolbox'
+import Button from 'react-toolbox/lib/button'
+import {Card, CardText, CardTitle, CardActions} from 'react-toolbox/lib/card'
 import style from './style'
 
 const Article = (props) => {

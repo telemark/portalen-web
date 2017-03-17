@@ -1,30 +1,24 @@
-@import "../../sass/globals";
-
+@import "../../global.css";
 .placeholder {
   text-align: center;
   font-size: 2 * $unit;
 }
-
 .withRemove {
   position: relative;
 }
-
 .removeContainer {
   position: absolute;
-  right: 1 * $unit;
-  padding: .3 * $unit;
+  right: calc(1 * var(--unit));
+  padding: calc(.3 * var(--unit));
 }
-
 @media screen and (max-width: 767px) {
   .xsreverse > *:nth-child(1) {order: 2;}
   .xsreverse > *:nth-child(2) {order: 1;}
 }
-
 .newstitle,
 .htmlContent img {
-  margin-bottom: 1 * $unit;
+  margin-bottom: calc(1 * var(--unit));
 }
-
 .cardTextEqualHeight {
   flex: 1 0 auto;
 }
@@ -33,7 +27,6 @@
     flex: 0 0 auto;
   }
 }
-
 .htmlContent img,
 .htmlContentAd img {
   display: block;
@@ -53,11 +46,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8 * $unit;
+  padding: calc(8 * var(--unit));
   text-align: center;
-  margin-bottom: 1 * $unit;
+  margin-bottom: calc(1 * var(--unit));
   background: #ccc;
   .icon {
-    font-size: 8 * $unit;
+    font-size: calc(8 * var(--unit));
   }
 }

@@ -106,7 +106,9 @@ module.exports = {
             options: {
               plugins: () => {
                 return [
+                  require('postcss-import'),
                   require('postcss-cssnext')({
+                    browsers: ['last 2 versions', '> 5%'],
                     features: {
                       customProperties: {
                         variables: reactToolboxVariables
@@ -115,40 +117,6 @@ module.exports = {
                   })
                 ]
               }
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 2,
-              sourceMap: true,
-              localIdentName: '[local]___[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => {
-                return [
-                  require('postcss-cssnext')
-                ]
-              }
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              sourceMap: true
             }
           }
         ]
@@ -203,7 +171,7 @@ module.exports = {
       'src',
       'node_modules'
     ],
-    extensions: ['.json', '.js', '.jsx', '.scss']
+    extensions: ['.json', '.js', '.jsx', '.css']
   },
   plugins: [
     // hot reload

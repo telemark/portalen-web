@@ -22,6 +22,7 @@ module.exports = {
       './src/client.js'
     ]
   },
+  stats: 'errors-only',
   output: {
     path: assetsPath,
     filename: '[name]-[chunkhash].js',
@@ -34,41 +35,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                importLoaders: 2,
-                sourceMap: true,
-                localIdentName: '[local]___[hash:base64:5]'
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => {
-                  return [
-                    require('postcss-cssnext')
-                  ]
-                }
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
-              }
-            }
-          ]
-        })
       },
       {
         test: /\.css$/,
@@ -89,6 +55,7 @@ module.exports = {
               options: {
                 plugins: () => {
                   return [
+                    require('postcss-import'),
                     require('postcss-cssnext')({
                       features: {
                         customProperties: {
@@ -153,7 +120,7 @@ module.exports = {
       'src',
       'node_modules'
     ],
-    extensions: ['.json', '.js', '.jsx', '.scss']
+    extensions: ['.json', '.js', '.jsx', '.css']
   },
   plugins: [
     new CleanPlugin([assetsPath], { root: projectRootPath }),

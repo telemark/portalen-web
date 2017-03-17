@@ -1,12 +1,10 @@
-@import "../../sass/globals";
-
+@import "../../global.css";
 .itemTitle {
-  font-size: 1.8 * $unit;
-  line-height: 2 * $unit;
+  font-size: calc(1.8 * var(--unit));
+  line-height: calc(2 * var(--unit));
   margin: 0;
   font-weight: bold;
 }
-
 .listContainer,
 .listContainerTight {
   display: flex;
@@ -14,8 +12,8 @@
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  padding-top: 1 * $unit;
-  padding-bottom: 1 * $unit;
+  padding-top: calc(1 * var(--unit));
+  padding-bottom: calc(1 * var(--unit));
 }
 .listContainerTight {
   min-height: 0rem;
@@ -44,7 +42,7 @@
 .preview {
   border: 1px solid #ccc;
   background: #f2f2f2;
-  padding: 2 * $unit;
+  padding: calc(2 * var(--unit));
   position: relative;
 }
 .previewTitle {
@@ -52,13 +50,12 @@
   top: 0;
   right: 0;
   background: #ccc;
-  font-size: 1 * $unit;
+  font-size: calc(1 * var(--unit));
   padding: 5px 10px;
 }
 .content {
   white-space: normal;
 }
-
 .cardList {
   li > span {
     align-items: flex-start;

@@ -1,5 +1,8 @@
 import React from 'react'
-import {Navigation, Link, IconButton} from 'react-toolbox'
+import Navigation from 'react-toolbox/lib/navigation'
+import Link from 'react-toolbox/lib/link'
+import {IconButton} from 'react-toolbox/lib/button'
+
 import style from './style'
 
 const Sidebar = (props) => {

@@ -1,5 +1,4 @@
-@import "../../sass/globals";
-
+@import "../../global.css";
 .logo {
   display: inline-block;
   width: 68px;

@@ -1,0 +1,11 @@
+@import "../../global.css";
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: calc(5 * var(--unit)) calc(2 * var(--unit));
+  background: var(--tfk-yellow);
+}
+.container > * {
+  width: 100%;
+}
