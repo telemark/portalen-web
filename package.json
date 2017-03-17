@@ -119,7 +119,7 @@
     "inert": "4.1.0",
     "invariant": "2.2.2",
     "jsonwebtoken": "7.3.0",
-    "ldapauth-fork": "3.0.0",
+    "ldapauth-fork": "3.0.1",
     "moment": "2.17.1",
     "mongoose": "4.9.0",
     "mongoose-search-plugin": "0.1.2",
