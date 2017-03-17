@@ -92,6 +92,7 @@ server.route(roleRoutes)
 server.route(linkRoutes)
 server.route(contentRoutes)
 
+/*
 server.route({
   method: 'POST',
   path: '/user/login',
@@ -100,6 +101,8 @@ server.route({
     auth: false
   }
 })
+*/
+
 server.route({
   method: 'GET',
   path: '/user/logout',
@@ -116,7 +119,7 @@ server.route({
 })
 server.route({
   method: 'GET',
-  path: '/signin',
+  path: '/user/signin',
   handler: User.signin,
   config: {
     auth: false

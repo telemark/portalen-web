@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 import shortid from 'shortid'
 import {fetchUrl, makeUrl} from '../helpers/fetch'
 import config from '../../src/config'
-import configLDAP from '../../src/configLDAP'
 import verifySigninJwt from '../../src/lib/verify-signin-jwt'
 
 function signin (request, reply) {
@@ -34,6 +33,7 @@ function signin (request, reply) {
   })
 }
 
+/*
 function login (request, reply) {
   const payload = request.payload
   const username = payload.username
@@ -73,6 +73,7 @@ function login (request, reply) {
     }
   })
 }
+*/
 
 function logout (request, reply) {
   request.cookieAuth.clear()
@@ -118,7 +119,6 @@ function requireAuth (request, session, callback) {
 }
 
 const User = {
-  login,
   logout,
   loadAuth,
   requireAuth,
