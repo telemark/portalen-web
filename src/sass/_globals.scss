@@ -1,16 +1,28 @@
 $import-flex-attributes: true;
-
-@import "~react-toolbox/lib/globals";
+$tfk-yellow: #ffd520;
+$tfk-black: #000000;
+$tfk-green: #6ac4ae;
+$tfk-blue: #00b1c7;
+$tfk-red: #e30438;
+$tfk-bg-page: #f2f2f2;
+$tfk-text-color: #000;
 
 $unit: 1rem;
-$color-primary-dark: $color-primary-dark;
-$color-primary-light: $color-primary-light;
-$color-primary-contrast: $color-primary-contrast;
-$color-accent: $color-accent;
-$color-divider: $color-divider;
 $color-content: #fafafa;
 $color-danger: #d9534f;
 $color-success: #5cb85c;
+
+$z-index-higher: 300;
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
 
 .card {
   margin-bottom: 1.5 * $unit;

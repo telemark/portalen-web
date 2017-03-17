@@ -4,7 +4,6 @@ import {asyncConnect} from 'redux-connect'
 import {isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth'
 import {push} from 'react-router-redux'
 import {AppUser, AppGuest} from 'containers'
-import 'react-toolbox/lib/commons'
 import './style'
 
 @asyncConnect([{
