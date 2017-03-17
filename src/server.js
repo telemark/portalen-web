@@ -16,7 +16,6 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-connect'
 import createHistory from 'react-router/lib/createMemoryHistory'
 import {Provider} from 'react-redux'
 import getRoutes from './routes'
-
 const good = require('good')
 const pretty = new PrettyError()
 const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort
@@ -65,7 +64,10 @@ server.ext('onPreResponse', (request, reply) => {
     request.raw.req.url = request.raw.req.url.replace('/api', '')
     return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
   }
-  return reply.continue()
+  if (request.path.substring(0, 7) === '/signin') {
+    console.log('Signin!')
+    return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
+  }
 })
 
 server.route({
@@ -108,13 +110,11 @@ server.ext('onPreResponse', (request, reply) => {
       return hydrateOnClient()
     } else if (renderProps) {
       loadOnServer({...renderProps, store, helpers: {client}}).then(() => {
-        /*
         const {auth: {user}} = store.getState()
         if (!user) {
           const authUrl = `${config.authServiceUrl}?origin=${config.originUrl}`
           reply.redirect(authUrl)
         }
-        */
         const component = (
           <Provider store={store} key='provider'>
             <ReduxAsyncConnect {...renderProps} />

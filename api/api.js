@@ -116,6 +116,14 @@ server.route({
 })
 server.route({
   method: 'GET',
+  path: '/signin',
+  handler: User.signin,
+  config: {
+    auth: false
+  }
+})
+server.route({
+  method: 'GET',
   path: '/info',
   config: {
     handler: Info.readAll

@@ -10,15 +10,17 @@ module.exports = token => {
     if (!token) {
       reject(new Error('Missing required signin jwt'))
     } else {
-      jwt.verify(token, config.JWT_SECRET, (error, decoded) => {
+      jwt.verify(token, config.jwtSecret, (error, decoded) => {
         if (error) {
+          console.error('JWT verification failed')
+          console.error(error)
           reject(error)
         } else {
           const decrypted = encryptor.decrypt(decoded.data)
           const sessionUrl = `${config.sessionStorageUrl}/${decrypted.session}`
           superagent.get(sessionUrl)
             .then(result => {
-              const user = encryptor.decrypt(result.data.value)
+              const user = encryptor.decrypt(result.body.value)
               const data = {
                 cn: user.displayName || user.cn || '',
                 userId: user.sAMAccountName || user.uid || '',
@@ -28,6 +30,9 @@ module.exports = token => {
               resolve(data)
             })
             .catch(error => {
+              console.log(sessionUrl)
+              console.log('Getting external session failed')
+              console.error(error)
               reject(error)
             })
         }
