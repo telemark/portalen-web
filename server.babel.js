@@ -2,7 +2,7 @@
 
 var fs = require('fs')
 
-var babelrc = fs.readFileSync('./.babelrc')
+var babelrc = fs.readFileSync('./.babelrc-server')
 var config
 
 try {
