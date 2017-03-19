@@ -268,4 +268,3 @@ if (config.api.search) {
     }
   })
 }
-

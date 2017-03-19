@@ -64,11 +64,11 @@ server.ext('onPreResponse', (request, reply) => {
     request.raw.req.url = request.raw.req.url.replace('/api', '')
     return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
   }
-  /*
-  if (request.path.substring(0, 7) === '/signin') {
+  if (request.path.substring(0, 12) === '/user/signin') {
     console.log('Signin!')
     return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
-  } */
+  }
+  return reply.continue()
 })
 
 server.route({

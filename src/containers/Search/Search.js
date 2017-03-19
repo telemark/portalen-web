@@ -25,7 +25,6 @@ import style from './style'
   }
 )
 export default class Search extends Component {
-
   componentDidMount () {
     this.loadQuery()
   }

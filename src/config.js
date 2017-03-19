@@ -12,7 +12,7 @@ const environment = {
 }[process.env.NODE_ENV || 'development']
 
 module.exports = Object.assign({
-  jwtSecret: process.env.JWT_SECRET || 'Louie Louie, oh no, I got to go, Louie Louie, oh no, I got to go',
+  jwtSecret: process.env.JWT_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   piwikURL: process.env.PIWIK_URL || 'https://piwik.service.t-fk.no',
   piwikSiteID: process.env.PIWIK_SITE_ID || 1,
   host: process.env.HOST || 'localhost',
@@ -21,16 +21,16 @@ module.exports = Object.assign({
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || 3030,
   originUrl: process.env.ORIGIN_URL || 'http://localhost:3000/user/signin',
-  authServiceUrl: process.env.AUTH_SERVICE_URL || 'auth.demo.t-fk.win/login',
+  authServiceUrl: process.env.AUTH_SERVICE_URL || 'https://auth.demo.t-fk.win/login',
   databaseUri: process.env.DATABASE_URI || 'mongodb://localhost:27017/tfk_portalen',
   sessionSecret: process.env.SESSION_SECRET || 'the-password-must-be-at-least-32-characters-long',
   sessionTimeoutDays: process.env.SESSION_TIMEOUT || 7,
-  sessionStorageUrl: process.env.SESSION_STORAGE_URL || 'http://tmp.storage.micro.t-fk.no',
+  sessionStorageUrl: process.env.SESSION_STORAGE_URL || 'https://tmp.storage.micro.t-fk.no',
   tokenSecret: process.env.TOKEN_SECRET || 'supersecret',
-  encryptorSecret: process.env.ENCRYPTOR_SECRET || 'Louie Louie, oh no, I got to go, Louie Louie, oh no, I got to go',
+  encryptorSecret: process.env.ENCRYPTOR_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   wsProtocol: process.env.WSPROTOCOL || 'ws',
   tasks: {
-    key: process.env.PORTALEN_TASKS_JWT_KEY || 'Louie Louie, oh no, I got to go',
+    key: process.env.PORTALEN_TASKS_JWT_KEY || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
     url: process.env.PORTALEN_TASKS_SERVICE_URL || 'https://tasks.portalen.no'
   },
   apiTimeout: 3000,

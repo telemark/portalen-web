@@ -27,6 +27,7 @@ module.exports = token => {
                 company: user.company || config.api.defaults.company,
                 mail: user.mail || config.api.defaults.mail
               }
+              console.log('External session retrieved')
               resolve(data)
             })
             .catch(error => {

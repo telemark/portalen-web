@@ -17,7 +17,6 @@ import style from './style'
   {addSubscription, removeSubscription}
 )
 export default class Innstillinger extends Component {
-
   handleChange = (field, value) => {
     if (value) {
       this.props.addSubscription(field)
