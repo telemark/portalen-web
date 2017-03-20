@@ -5,7 +5,7 @@ import config from '../../src/config'
 import verifySigninJwt from '../../src/lib/verify-signin-jwt'
 
 function signin (request, reply) {
-  const token = request.query.jwt
+  const {token} = request.query
   verifySigninJwt(token).then(data => {
     console.log('jwt ok')
     const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), data)
@@ -35,48 +35,6 @@ function signin (request, reply) {
     reply({error: error.name || JSON.stringify(error)}).code(500)
   })
 }
-
-/*
-function login (request, reply) {
-  const payload = request.payload
-  const username = payload.username
-  const password = payload.password
-  const LdapAuth = require('ldapauth-fork')
-  const auth = new LdapAuth(configLDAP)
-  auth.authenticate(username, password, (err, user) => {
-    if (err) {
-      reply({error: err.name || JSON.stringify(err)}).code(500)
-    } else {
-      var data = {
-        cn: user.cn,
-        userId: user.sAMAccountName || user.uid || '',
-        company: user.company || config.api.defaults.company,
-        mail: user.mail || config.api.defaults.mail
-      }
-      const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), data)
-      fetchUrl(makeUrlFunc(config.api.userRoles))
-      .then((roles) => {
-        data.roles = roles
-        data.rolesJoined = roles.join()
-        const token = jwt.sign(data, config.tokenSecret, {
-          expiresIn: `${config.sessionTimeoutDays} days`
-        })
-        const sid = shortid.generate()
-        request.server.app.cache.set(sid, {token: token}, 0, (err) => {
-          if (err) {
-            return reply(err)
-          }
-          request.cookieAuth.set({sid: sid})
-          reply(data)
-        })
-      })
-      .catch((err) => {
-        reply(err)
-      })
-    }
-  })
-}
-*/
 
 function logout (request, reply) {
   request.cookieAuth.clear()

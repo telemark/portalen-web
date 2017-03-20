@@ -260,7 +260,7 @@ export default class AppUser extends Component {
   renderSidebar () {
     const {info: {links, urls}} = this.props
     return (
-      <NavDrawer active={this.state.drawerActive} permanentAt='xxxl'>
+      <NavDrawer active={this.state.drawerActive} permanentAt='xxxl' onOverlayClick={this.toggleDrawerActive}>
         <div className={style.sidebar}>
           {links && <Sidebar items={links} />}
           {urls && <Sidebar items={urls} editAction={this.handleEditUrl} removeAction={this.handleRemoveUrl} />}

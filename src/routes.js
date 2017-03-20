@@ -4,7 +4,7 @@ import {isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth'
 import {
     App,
     Home,
-    Login,
+    AuthStatus,
     NotFound,
     Tilbakemeldinger,
     Hjelp,
@@ -16,14 +16,19 @@ import {
 export default (store) => {
   const requireLogin = (nextState, replace, cb) => {
     function checkAuth () {
-      const {auth: { user }, routing: {locationBeforeTransitions: {pathname}}} = store.getState()
+      const {auth: { user }} = store.getState()
       if (!user) {
-        replace({
-          pathname: '/login',
-          query: (pathname && pathname.length > 1) ? {loginRedirect: pathname} : null
-        })
+        if (__SERVER__) {
+          replace({
+            pathname: '/reauth'
+          })
+          cb()
+        } else {
+          global.location.href = '/reauth'
+        }
+      } else {
+        cb()
       }
-      cb()
     }
 
     if (!isAuthLoaded(store.getState())) {
@@ -44,7 +49,7 @@ export default (store) => {
         <Route path='/sok/:query(/:page)' component={Search} />
         <Route path='/meldinger/:id' component={MessageView} />
       </Route>
-      <Route path='/login' component={Login} />
+      <Route path='/authstatus' component={AuthStatus} />
       <Route path='*' component={NotFound} status={404} />
     </Route>
   )

@@ -79,10 +79,6 @@ export function isLoaded (globalState) {
   return globalState.auth && globalState.auth.loaded
 }
 
-export function isAuthenticated (globalState) {
-  return globalState.auth && globalState.auth.user
-}
-
 export function load () {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
@@ -90,16 +86,14 @@ export function load () {
   }
 }
 
-export function login (username, password, redirect = '/') {
+export function login (token) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: (client) => client.post('/user/login', {
-      data: {
-        username: username,
-        password: password
+    promise: (client) => client.get('/user/signin', {
+      params: {
+        token
       }
-    }),
-    redirect: redirect
+    })
   }
 }
 

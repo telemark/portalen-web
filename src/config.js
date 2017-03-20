@@ -20,7 +20,7 @@ module.exports = Object.assign({
   publicUrl: process.env.PUBLIC_URL || 'http://localhost:3000',
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || 3030,
-  originUrl: process.env.ORIGIN_URL || 'http://localhost:3000/user/signin',
+  originUrl: process.env.ORIGIN_URL || 'http://localhost:3000/authstatus',
   authServiceUrl: process.env.AUTH_SERVICE_URL || 'https://auth.demo.t-fk.win/login',
   databaseUri: process.env.DATABASE_URI || 'mongodb://localhost:27017/tfk_portalen',
   sessionSecret: process.env.SESSION_SECRET || 'the-password-must-be-at-least-32-characters-long',

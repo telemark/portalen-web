@@ -17,8 +17,12 @@
   display: inline-block;
   vertical-align: middle;
 }
+.link {
+  display: block;
+}
 .button {
   font-size: calc(1.5 * var(--unit));
   display: block;
   width: 100%;
+  text-decoration: none;
 }

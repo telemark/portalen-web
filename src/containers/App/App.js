@@ -17,8 +17,7 @@ import './style'
 }])
 @connect(
   (state) => ({
-    user: state.auth.user,
-    redirect: state.auth.redirect
+    user: state.auth.user
   }),
   {
     pushState: push,
@@ -29,8 +28,7 @@ export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
-    pushState: PropTypes.func.isRequired,
-    redirect: PropTypes.string
+    pushState: PropTypes.func.isRequired
   }
 
   static contextTypes = {
@@ -39,14 +37,14 @@ export default class App extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (!this.props.user && nextProps.user) {
-      this.props.loadAuth().then(() => nextProps.redirect && this.props.pushState(nextProps.redirect))
+      this.props.loadAuth().then(() => this.props.pushState('/'))
     } else if (this.props.user && !nextProps.user) {
-      this.props.pushState('/login')
+      this.props.pushState('/authstatus')
     }
   }
 
   render () {
-    if (this.props.user) {
+    if (this.props.user && this.props.user.token) {
       return (
         <AppUser>
           {this.props.children}

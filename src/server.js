@@ -64,10 +64,6 @@ server.ext('onPreResponse', (request, reply) => {
     request.raw.req.url = request.raw.req.url.replace('/api', '')
     return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
   }
-  if (request.path.substring(0, 12) === '/user/signin') {
-    console.log('Signin!')
-    return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})
-  }
   return reply.continue()
 })
 
@@ -102,7 +98,7 @@ server.ext('onPreResponse', (request, reply) => {
     return
   }
 
-  match({history, routes: getRoutes(store), location: request.path}, (error, redirectLocation, renderProps) => {
+  match({history, routes: getRoutes(store), location: {pathname: request.path, query: request.query}}, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       return reply.redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (error) {
@@ -112,7 +108,7 @@ server.ext('onPreResponse', (request, reply) => {
     } else if (renderProps) {
       loadOnServer({...renderProps, store, helpers: {client}}).then(() => {
         const {auth: {user}} = store.getState()
-        if (!user) {
+        if (!user && request.path === '/reauth') {
           const authUrl = `${config.authServiceUrl}?origin=${config.originUrl}`
           reply.redirect(authUrl)
         }

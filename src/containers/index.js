@@ -2,7 +2,7 @@ import App from './App/App'
 import AppUser from './AppUser/AppUser'
 import AppGuest from './AppGuest/AppGuest'
 import Home from './Home/Home'
-import Login from './Login/Login'
+import AuthStatus from './AuthStatus/AuthStatus'
 import Messages from './Messages/Messages'
 import MessageView from './MessageView/MessageView'
 import NotFound from './NotFound/NotFound'
@@ -16,7 +16,7 @@ export {
   AppUser,
   AppGuest,
   Home,
-  Login,
+  AuthStatus,
   Messages,
   MessageView,
   NotFound,
