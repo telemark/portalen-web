@@ -34,7 +34,7 @@ export default class ApiClient {
 
         request.end((err, { body } = {}) => {
           if (err && err.timeout) {
-            return reject(`Lasting av ${request.url} timet ut`)
+            return reject(new Error(`Lasting av ${request.url} timet ut`))
           }
           err ? reject(body || err) : resolve(body)
         })

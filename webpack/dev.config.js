@@ -23,7 +23,7 @@ try {
   console.error(err)
 }
 
-var babelrcObjectDevelopment = babelrcObject.env && babelrcObject.env.development || {}
+var babelrcObjectDevelopment = (babelrcObject.env && babelrcObject.env.development) || {}
 
 // merge global and dev-only plugins
 var combinedPlugins = babelrcObject.plugins || []
