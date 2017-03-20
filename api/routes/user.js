@@ -45,7 +45,7 @@ function decodeToken (token) {
   return new Promise((resolve, reject) => {
     jwt.verify(token, config.tokenSecret, (err, decoded) => {
       if (err) {
-        return reject(null)
+        return reject(err)
       }
       resolve(decoded)
     })
