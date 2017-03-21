@@ -26,14 +26,14 @@ module.exports = Object.assign({
   sessionSecret: process.env.SESSION_SECRET || 'the-password-must-be-at-least-32-characters-long',
   sessionTimeoutDays: process.env.SESSION_TIMEOUT || 7,
   sessionStorageUrl: process.env.SESSION_STORAGE_URL || 'https://tmp.storage.micro.t-fk.no',
-  tokenSecret: process.env.TOKEN_SECRET || 'supersecret',
+  tokenSecret: process.env.TOKEN_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   encryptorSecret: process.env.ENCRYPTOR_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   wsProtocol: process.env.WSPROTOCOL || 'ws',
   tasks: {
     key: process.env.PORTALEN_TASKS_JWT_KEY || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
     url: process.env.PORTALEN_TASKS_SERVICE_URL || 'https://tasks.portalen.no'
   },
-  apiTimeout: 3000,
+  apiTimeout: 10000,
   api: {
     links: process.env.API_LINKS || '/api/links?roles={rolesJoined}',
     userRoles: process.env.API_ROLES_USER || '/api/roles/map?company={company}',

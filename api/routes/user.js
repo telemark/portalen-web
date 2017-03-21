@@ -5,8 +5,8 @@ import config from '../../src/config'
 import verifySigninJwt from '../../src/lib/verify-signin-jwt'
 
 function signin (request, reply) {
-  const {token} = request.query
-  verifySigninJwt(token).then(data => {
+  const {jwt} = request.query
+  verifySigninJwt(jwt).then(data => {
     console.log('jwt ok')
     const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), data)
     fetchUrl(makeUrlFunc(config.api.userRoles))

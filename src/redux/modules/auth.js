@@ -86,12 +86,12 @@ export function load () {
   }
 }
 
-export function login (token) {
+export function login (jwt) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: (client) => client.get('/user/signin', {
       params: {
-        token
+        jwt
       }
     })
   }
