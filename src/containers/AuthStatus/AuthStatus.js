@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
 import {Link} from 'react-router'
-import {login} from 'redux/modules/auth'
 import {Card, CardText, CardTitle, CardActions} from 'react-toolbox/lib/card'
 import Button from 'react-toolbox/lib/button'
 import {Logo, Warning} from 'components'
@@ -13,17 +12,9 @@ import style from './style'
     user: state.auth.user,
     error: state.auth.loginError
   }),
-  {
-    login
-  }
+  {}
 )
 export default class authstatus extends Component {
-  componentDidMount () {
-    const {login, user, location: {query: {jwt}}} = this.props
-    if (jwt && !user) {
-      return login(jwt)
-    }
-  }
   render () {
     const {user, error, location: {query: {jwt}}} = this.props
     const title = jwt ? 'Logger inn..' : user ? 'Du er logget inn' : 'Du er logget ut'

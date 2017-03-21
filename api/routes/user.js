@@ -5,13 +5,11 @@ import config from '../../src/config'
 import verifySigninJwt from '../../src/lib/verify-signin-jwt'
 
 function signin (request, reply) {
-  const {jwt} = request.query
-  verifySigninJwt(jwt).then(data => {
-    console.log('jwt ok')
+  const {token} = request.query
+  verifySigninJwt(token).then(data => {
     const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), data)
     fetchUrl(makeUrlFunc(config.api.userRoles))
       .then((roles) => {
-        console.log('roles, ok')
         data.roles = roles
         data.rolesJoined = roles.join()
         const token = jwt.sign(data, config.tokenSecret, {
@@ -22,7 +20,6 @@ function signin (request, reply) {
           if (err) {
             return reply(err)
           }
-          console.log('Session, ok')
           request.cookieAuth.set({sid: sid})
           reply(data)
         })

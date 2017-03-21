@@ -117,11 +117,13 @@ server.ext('onPreResponse', (request, reply) => {
             <ReduxAsyncConnect {...renderProps} />
           </Provider>
         )
-
         global.navigator = {userAgent: request.headers['user-agent']}
-
-        reply('<!doctype html>\n' +
-          ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />)).code(200)
+        const response = reply('<!doctype html>\n' +
+          ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />)).hold()
+        if (user.authHeader) {
+          response.header('set-cookie', user.authHeader)
+        }
+        response.code(200).send()
       })
     } else {
       reply('Not found').code(404)

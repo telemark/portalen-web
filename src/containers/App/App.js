@@ -2,15 +2,15 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {asyncConnect} from 'redux-connect'
 import {isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth'
-import {push} from 'react-router-redux'
+import {push, replace} from 'react-router-redux'
 import {AppUser, AppGuest} from 'containers'
 import './style'
 
 @asyncConnect([{
-  promise: ({store: {dispatch, getState}}) => {
+  promise: ({store: {dispatch, getState}, location: {query: {jwt}}}) => {
     const promises = []
     if (!isAuthLoaded(getState())) {
-      promises.push(dispatch(loadAuth()))
+      promises.push(dispatch(loadAuth(jwt)))
     }
     return Promise.all(promises)
   }
@@ -20,7 +20,8 @@ import './style'
     user: state.auth.user
   }),
   {
-    pushState: push,
+    push,
+    replace,
     loadAuth
   }
 )
@@ -28,18 +29,23 @@ export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
-    pushState: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired
   }
 
   static contextTypes = {
     store: PropTypes.object.isRequired
   }
 
+  componentDidMount () {
+    const {replace, location: {query: {jwt}}} = this.props
+    if (jwt) {
+      replace('/')
+    }
+  }
+
   componentWillReceiveProps (nextProps) {
-    if (!this.props.user && nextProps.user) {
-      this.props.loadAuth().then(() => this.props.pushState('/'))
-    } else if (this.props.user && !nextProps.user) {
-      this.props.pushState('/authstatus')
+    if (this.props.user && !nextProps.user) {
+      this.props.push('/authstatus')
     }
   }
 

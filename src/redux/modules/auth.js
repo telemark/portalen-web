@@ -79,10 +79,11 @@ export function isLoaded (globalState) {
   return globalState.auth && globalState.auth.loaded
 }
 
-export function load () {
+export function load (token = null) {
+  const params = token ? {params: {token}} : {}
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/user/load')
+    promise: (client) => client.get(token ? '/user/signin' : '/user/load', params)
   }
 }
 

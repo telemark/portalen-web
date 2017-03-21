@@ -32,11 +32,17 @@ export default class ApiClient {
           request.send(data)
         }
 
-        request.end((err, { body } = {}) => {
+        request.end((err, { body, header } = {}) => {
+          const responseBody = body
+          if (__SERVER__ && header['set-cookie']) {
+            const token = header['set-cookie'][0]
+            responseBody.token = token
+            responseBody.authHeader = token
+          }
           if (err && err.timeout) {
             return reject(new Error(`Lasting av ${request.url} timet ut`))
           }
-          err ? reject(body || err) : resolve(body)
+          err ? reject(responseBody || err) : resolve(responseBody)
         })
       })
     })
