@@ -120,7 +120,7 @@ server.ext('onPreResponse', (request, reply) => {
         global.navigator = {userAgent: request.headers['user-agent']}
         const response = reply('<!doctype html>\n' +
           ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />)).hold()
-        if (user.authHeader) {
+        if (user && user.authHeader) {
           response.header('set-cookie', user.authHeader)
         }
         response.code(200).send()
