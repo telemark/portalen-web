@@ -34,18 +34,6 @@ Sett opp evt nødvendige endringer i portale.env
 $ docker-compose up
 ```
 
-## Microservices og utvikling
-
-Det benyttes en del mikrotjenester basert på rammeverket Seneca.
-
-- [tfk-seneca-base](https://github.com/telemark/tfk-seneca-base)
-- [tfk-seneca-ping](https://github.com/telemark/tfk-seneca-ping)
-- [portalen-content](https://github.com/telemark/portalen-content)
-- [portalen-collector-ads](https://github.com/telemark/portalen-collector-ads)
-- [portalen-collector-news](https://github.com/telemark/portalen-collector-news)
-
-tfk-seneca-base må startes først og deretter de andre
-
 ## License
 
 [MIT](LICENSE)

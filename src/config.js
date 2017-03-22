@@ -54,14 +54,14 @@ module.exports = Object.assign({
     token: process.env.FEEDBACK_TOKEN || 'github token'
   },
   app: {
-    title: 'Forsiden',
+    title: 'Portalen',
     description: 'Din start på arbeidsdagen',
     head: {
-      titleTemplate: 'Forsiden: %s',
+      titleTemplate: 'Portalen: %s',
       meta: [
         {name: 'description', content: 'Din start på arbeidsdagen'},
         {charset: 'utf-8'},
-        {property: 'og:site_name', content: 'Forsiden'},
+        {property: 'og:site_name', content: 'Portalen'},
         {property: 'og:image', content: ''},
         {property: 'og:locale', content: 'nb_NO'},
         {property: 'og:title', content: 'Portalen'},
