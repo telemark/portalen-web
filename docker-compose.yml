@@ -1,41 +1,6 @@
 mongoserver:
   image: mongo:3.4.1
 
-services_base:
-  image: telemark/tfk-seneca-base
-  container_name: services_base
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
-services_ping:
-  image: telemark/tfk-seneca-ping
-  container_name: services_ping
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
-portalen_collector_ads:
-  image: telemark/portalen-collector-ads
-  container_name: portalen_collector_ads
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
-portalen_collector_news:
-  image: telemark/portalen-collector-news
-  container_name: portalen_collector_news
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
-portalen_content:
-  image: telemark/portalen-content
-  container_name: portalen_content
-  env_file: portalen.env
-  restart: always
-  net: container:portalen_web
-
 portalen_web:
   image: telemark/portalen-web
   container_name: portalen_web

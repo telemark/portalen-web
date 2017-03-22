@@ -18,10 +18,7 @@ const linkRoutes = require('./routes/links')
 const contentRoutes = require('./routes/content')
 const channelRoutes = require('./routes/channels')
 const validateApi = require('./helpers/validate-api')
-const Chairo = require('chairo')
 const good = require('good')
-const Seneca = require('seneca')({log: 'silent'})
-Seneca.use('entity')
 
 mongoose.connect(config.databaseUri)
 
@@ -44,7 +41,7 @@ const goodOptions = {
 
 server.connection({port: config.apiPort})
 
-server.register([{register: good, options: goodOptions}, {register: Chairo, options: {seneca: Seneca}}, h2o2, HapiAuthCookie, hapiAuthJwt2, Nes], (err) => {
+server.register([{register: good, options: goodOptions}, h2o2, HapiAuthCookie, hapiAuthJwt2, Nes], (err) => {
   if (err) {
     throw err
   }
@@ -73,12 +70,6 @@ server.register([{register: good, options: goodOptions}, {register: Chairo, opti
   server.subscription('/messageupdates/{role}')
   server.subscription('/tasksupdates')
   server.subscription('/contentupdates')
-
-  const seneca = server.seneca
-
-  seneca.use('mesh', {auto: true})
-
-  seneca.log.info('hapi', server.info)
 
   server.start(() => {
     console.info('==> ✅  Api-server is listening')

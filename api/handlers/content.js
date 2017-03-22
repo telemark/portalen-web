@@ -1,23 +1,17 @@
 'use strict'
 
+'use strict'
+
+import {fetchUrl} from '../helpers/fetch'
 const Boom = require('boom')
 
-function getContent (request, reply) {
-  var pattern = {role: 'info', type: 'user'}
-  var user = request.params.user
-  var roles = request.query.roles.split(',')
-  var payload = {
-    roles: roles,
-    user: user
-  }
+module.exports.getContent = (request, reply) => {
+  const roles = request.query.roles.split(',').join('|')
 
-  request.seneca.act(pattern, payload, function (error, data) {
-    if (error) {
-      return reply(Boom.internal(error))
-    } else {
-      return reply(data)
-    }
+  const url = `https://content.portalen.t-fk.win?roles=${roles}`
+  fetchUrl(url).then((data) => {
+    return reply(data)
+  }).catch((error) => {
+    return reply(Boom.internal(error))
   })
 }
-
-module.exports.getContent = getContent
