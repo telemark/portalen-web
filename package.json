@@ -161,7 +161,7 @@
     "wreck": "11.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "7.2.0",
+    "babel-eslint": "7.2.1",
     "babel-loader": "6.4.1",
     "babel-plugin-react-transform": "2.0.2",
     "babel-plugin-typecheck": "3.9.0",
