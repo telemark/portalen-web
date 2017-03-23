@@ -4,8 +4,8 @@
 #
 ###########################################################
 
-# Setting the base to nodejs 4.8.0
-FROM node:4.8.0-alpine
+# Setting the base to nodejs 6.10.0
+FROM node:6.10.0-alpine
 
 # Maintainer
 MAINTAINER Geir Gåsodden
