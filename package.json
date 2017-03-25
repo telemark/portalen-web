@@ -139,7 +139,7 @@
     "react-addons-css-transition-group": "15.4.2",
     "react-dom": "15.4.2",
     "react-flexbox-grid": "1.0.2",
-    "react-helmet": "5.0.0",
+    "react-helmet": "5.0.1",
     "react-inline-css": "2.3.0",
     "react-markdown": "2.4.6",
     "react-redux": "5.0.3",
