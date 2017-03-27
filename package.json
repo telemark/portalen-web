@@ -127,7 +127,7 @@
     "mongoose": "4.9.1",
     "mongoose-search-plugin": "0.1.2",
     "nes": "6.4.2",
-    "normalize.css": "5.0.0",
+    "normalize.css": "6.0.0",
     "object.omit": "2.0.1",
     "object.pick": "1.2.0",
     "piping": "0.3.2",
