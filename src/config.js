@@ -41,13 +41,29 @@ module.exports = Object.assign({
     shortcuts: process.env.API_SHORTCUTS || '/api/shortcuts?roles={rolesJoined}',
     tasks: process.env.API_TASKS || null,
     content: process.env.API_CONTENT || '/api/content/{userId}?roles={rolesJoined}',
-    search: process.env.API_SEARCH || 'https://search.portalen.t-fk.no/api/search',
+    search: process.env.API_SEARCH || 'https://search.portalen.t-fk.no/api',
     jwtSecret: process.env.API_JWT_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
     defaults: {
       company: process.env.DEFAULTS_COMPANY || 'Sentraladministrasjonen',
       mail: process.env.DEFAULTS_MAIL || 'post@tfk.no',
       roles: ['alle', 'administrasjonen', 'sentraladministrasjonen']
     }
+  },
+  searchOptions: {
+    default: 'alt-innhold',
+    fasets: [{
+      value: 'alt-innhold',
+      title: 'Alt innhold'
+    }, {
+      value: 'employees',
+      title: 'Ansatte'
+    }, {
+      value: 'wwwtelemarkno',
+      title: 'www.telemark.no'
+    }, {
+      value: 'portaleninfo',
+      title: 'Infosider'
+    }]
   },
   feedback: {
     url: process.env.FEEDBACK_URL || 'https://api.github.com/repos/telemark/portalen-forside/issues',

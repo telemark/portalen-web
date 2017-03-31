@@ -4,6 +4,8 @@ import HapiAuthCookie from 'hapi-auth-cookie'
 import config from '../src/config'
 import Nes from 'nes'
 import mongoose from 'mongoose'
+import queryString from 'query-string'
+import omit from 'object.omit'
 import {
   User,
   Messages,
@@ -250,8 +252,10 @@ if (config.api.search) {
       handler: {
         proxy: {
           mapUri: (request, callback) => {
-            const path = require('url').parse(request.raw.req.url).search
-            callback(null, `${config.api.search}${path}`)
+            const url = require('url').parse(request.raw.req.url)
+            const params = queryString.parse(url.query)
+            const index = (params && params.faset && params.faset !== config.searchOptions.default) ? `/${params.faset}/` : '/'
+            callback(null, `${config.api.search}${index}search?${queryString.stringify(omit(params, 'faset'))}`)
           },
           passThrough: true
         }

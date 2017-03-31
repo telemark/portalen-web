@@ -1,21 +1,37 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {load, reset} from 'redux/modules/search'
+import {asyncConnect} from 'redux-connect'
 import Helmet from 'react-helmet'
 import {Grid, Row, Col} from 'react-flexbox-grid'
-import {Article, Loading, Warning} from 'components'
 import Button from 'react-toolbox/lib/button'
 import Navigation from 'react-toolbox/lib/navigation'
 import {Link} from 'react-router'
+import omit from 'object.omit'
+
+import {load, isLoaded, reset} from 'redux/modules/search'
+import {Article, Warning} from 'components'
+import config from 'config'
 import style from './style'
 
+const size = 20
+
+@asyncConnect([{
+  promise: ({store: {dispatch, getState}, location: {query}}) => {
+    const promises = []
+    const params = {
+      ...query,
+      from: query.from ? Math.max(parseInt(query.from), 1) : 1,
+      size
+    }
+    if (query.phrase && query.phrase !== '' && !isLoaded(getState(), params)) {
+      promises.push(dispatch(load(params)))
+    }
+    return Promise.all(promises)
+  }
+}])
 @connect(
   (state) => ({
-    items: state.search.items,
-    query: state.search.query,
-    total: state.search.total,
-    page: state.search.page,
-    pages: state.search.pages,
+    search: state.search.data,
     loading: state.search.loading,
     error: state.search.error
   }),
@@ -25,24 +41,10 @@ import style from './style'
   }
 )
 export default class Search extends Component {
-  componentDidMount () {
-    this.loadQuery()
-  }
-
   componentWillUnmount () {
-    this.props.reset()
-  }
-
-  componentDidUpdate (prevProps) {
-    if (this.props.params.query !== prevProps.params.query || this.props.params.page !== prevProps.params.page) {
+    if (!__DEVELOPMENT__) {
       this.props.reset()
-      this.loadQuery()
     }
-  }
-
-  loadQuery () {
-    const page = this.props.params.page || 1
-    this.props.load(this.props.params.query, parseInt(page))
   }
 
   formatType (item) {
@@ -68,53 +70,78 @@ export default class Search extends Component {
     }
   }
 
-  renderNavigation () {
-    const {query, total, page, pages} = this.props
-    const thePages = Array.from({length: pages}, (v, k) => k + 1)
-    return (
-      <Navigation type='horizontal' className={style.navigation}>
-        {(pages > 1) && thePages.map((p, i) => {
-          return (
-            <Link key={i} to={`/sok/${query}/${p}`} className={style.navigationItem}>
-              <Button label={`${p}`} floating accent={p === page} mini />
-            </Link>
-          )
-        })}
-        <div className={style.info}>{`${total} treff på søkeordet "${query}", viser side ${page} av ${pages}.`}</div>
-      </Navigation>
-    )
-  }
-
   render () {
-    const {items, query, loading, error} = this.props
+    const {location: {query: {phrase}}} = this.props
+    const title = phrase ? `Søk: ${phrase}` : 'Søkeside'
     return (
       <Grid fluid>
         <Grid>
-          <Helmet title={`Søk: ${query}`} />
+          <Helmet title={title} />
           <Row>
             <Col xs={12}>
-              <h1>Søk: {query}</h1>
-              {loading && (
-                <Loading title={`Søker etter "${query}"..`} />
-              )}
-              {error && (
-                <Warning title={error} />
-              )}
-              {items && (items.length > 0) && (
-                <div>
-                  {this.renderNavigation()}
-                  {items.map((item, i) => {
-                    return (
-                      <Article key={i} {...this.formatType(item)} />
-                    )
-                  })}
-                  {this.renderNavigation()}
-                </div>
-              )}
+              <h1>{title}</h1>
+              {this.renderContent()}
             </Col>
           </Row>
         </Grid>
       </Grid>
+    )
+  }
+
+  renderContent () {
+    const {search, error} = this.props
+    if (error) {
+      return <Warning title={error} />
+    }
+    if (search && search.hits && search.hits.hits) {
+      return this.renderResult()
+    }
+    return <p className={style.info}>Du har ennå ikke søkt etter noe</p>
+  }
+
+  renderResult () {
+    const {search: {hits: {hits: items}}} = this.props
+    const {searchOptions} = config
+    return (
+      <div>
+        {searchOptions && this.renderFasets()}
+        {this.renderNavigation(true)}
+        {items.map((item, i) => <Article key={item._id || i} {...this.formatType(item)} />)}
+        {this.renderNavigation()}
+      </div>
+    )
+  }
+
+  renderFasets () {
+    const {searchOptions} = config
+    const {location: {query, query: {faset}}} = this.props
+    const selected = faset || searchOptions.default || ''
+    return (
+      <Navigation type='horizontal' className={style.navigation}>
+        {searchOptions.fasets && searchOptions.fasets.map(({value, title}, i) => {
+          const itemQuery = value === searchOptions.default ? omit(query, 'faset') : {...query, faset: value}
+          return (
+            <Link key={i} to={{pathname: '/sok', query: omit(itemQuery, 'from')}} className={style.navigationItem}><Button raised accent={value === selected} mini>{title}</Button></Link>
+          )
+        })}
+      </Navigation>
+    )
+  }
+
+  renderNavigation (showInfo = false) {
+    const {search: {hits: {total}}, location: {query, query: {phrase, from = '1'}}} = this.props
+    const numPages = Math.max(1, Math.ceil(total / size))
+    const thePages = Array.from({length: numPages}, (v, k) => `${k + 1}`)
+    const showPagination = numPages > 1
+    return (
+      <div>
+        {showPagination && (
+          <Navigation type='horizontal' className={style.navigation}>
+            {thePages.map((page) => <Link key={page} to={{pathname: '/sok', query: {...query, from: page}}} className={style.navigationItem}><Button floating accent={page === from} mini>{page}</Button></Link>)}
+          </Navigation>
+        )}
+        {showInfo && <p className={style.info}>{`${total} treff på søkeordet "${phrase}", viser side ${from} av ${numPages}.`}</p>}
+      </div>
     )
   }
 }

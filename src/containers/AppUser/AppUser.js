@@ -8,8 +8,10 @@ import {IconButton, Button} from 'react-toolbox/lib/button'
 import Input from 'react-toolbox/lib/input'
 import {IconMenu, MenuItem, MenuDivider} from 'react-toolbox/lib/menu'
 import Dialog from 'react-toolbox/lib/dialog'
+import ProgressBar from 'react-toolbox/lib/progress_bar'
 
 import {logout} from 'redux/modules/auth'
+import {setQuery, toggleSearchVisible} from 'redux/modules/search'
 import {load as loadInfo, addUrl, editUrl, removeUrl, updateExternal as updateExternalInfo} from 'redux/modules/info'
 import {load as loadMessages, updateExternal as updateExternalMessage, removeExternal as removeExternalMessage} from 'redux/modules/messages'
 import {Logo, Sidebar, Warning} from 'components'
@@ -22,11 +24,13 @@ import {push} from 'react-router-redux'
   (state) => ({
     user: state.auth.user,
     info: state.info.data,
-    query: state.search.query
+    phrase: state.search.phrase,
+    searchVisible: state.search.searchVisible,
+    searchLoading: state.search.loading
   }),
   {
     logout,
-    pushState: push,
+    push,
     addUrl,
     editUrl,
     removeUrl,
@@ -34,7 +38,9 @@ import {push} from 'react-router-redux'
     updateExternalMessage,
     removeExternalMessage,
     loadMessages,
-    updateExternalInfo
+    updateExternalInfo,
+    setQuery,
+    toggleSearchVisible
   }
 )
 export default class AppUser extends Component {
@@ -43,24 +49,21 @@ export default class AppUser extends Component {
     user: PropTypes.object,
     info: PropTypes.object,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired
   }
 
   state = {
     drawerActive: false,
     drawerPinned: false,
-    searchVisible: false,
     dialogActive: false,
-    query: '',
     url: {}
   }
 
   componentWillReceiveProps (nextProps) {
-    if (this.props.query !== nextProps.query) {
-      this.setState({
-        query: nextProps.query,
-        searchVisible: nextProps.query ? nextProps.query.length > 0 : false
-      })
+    if (!this.props.searchVisible && nextProps.searchVisible) {
+      setTimeout(() => {
+        document.querySelector('.site-search input').focus()
+      }, 100)
     }
     if (!this.props.info.roles && nextProps.info.roles) {
       this.props.loadMessages(this.subscriptionRoles(nextProps))
@@ -134,33 +137,27 @@ export default class AppUser extends Component {
     this.setState({ drawerActive: !this.state.drawerActive })
   }
 
-  toggleSearchVisible = () => {
-    const {query} = this.state
-    if (query && query.length > 0) {
-      this.performSearch()
-    } else {
-      this.setState({ searchVisible: !this.state.searchVisible, drawerActive: false, dialogActive: false }, () => {
-        if (this.state.searchVisible) {
-          document.querySelector('.site-search input').focus()
-        }
-      })
-    }
+  performSearch () {
+    const {phrase, push} = this.props
+    push({
+      pathname: '/sok',
+      query: {
+        phrase
+      }
+    })
   }
 
-  handleChange = (name, value) => {
-    this.setState({...this.state, [name]: value})
+  onSearchClick = () => {
+    const {phrase, toggleSearchVisible} = this.props
+    if (phrase && phrase !== '') {
+      return this.performSearch()
+    }
+    toggleSearchVisible()
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
     this.performSearch()
-  }
-
-  performSearch () {
-    const {query} = this.state
-    this.setState({
-      searchVisible: false
-    }, () => this.props.pushState(`/sok/${query}`))
   }
 
   /* Urls */
@@ -272,17 +269,20 @@ export default class AppUser extends Component {
   }
 
   handleOnMenuSelect = (value) => {
+    const {searchVisible} = this.props
     this.setState({
       drawerActive: false,
       drawerPinned: false,
-      searchVisible: false,
       dialogActive: false
     }, () => {
+      if (searchVisible) {
+        this.props.toggleSearchVisible()
+      }
       if (value === 'innstillinger') {
-        this.props.pushState('/innstillinger')
+        this.props.push('/innstillinger')
       }
       if (value === 'tilbakemeldinger') {
-        this.props.pushState('/tilbakemeldinger')
+        this.props.push('/tilbakemeldinger')
       }
       if (value === 'logout') {
         this.props.logout()
@@ -290,9 +290,19 @@ export default class AppUser extends Component {
     })
   }
 
+  renderSearchForm () {
+    const {phrase, setQuery} = this.props
+    return (
+      <form onSubmit={this.handleSubmit} className={style.form}>
+        <div className='site-search'>
+          <Input className={style.searchInput} type='text' label='Søk' value={phrase} onChange={setQuery} />
+        </div>
+      </form>
+    )
+  }
+
   renderHeader () {
-    const {info: {links, urls}} = this.props
-    const {searchVisible} = this.state
+    const {info: {links, urls}, searchVisible, searchLoading} = this.props
     return (
       <AppBar className={style.appbar}>
         <div className={searchVisible ? style.headerHolderSearch : style.headerHolder}>
@@ -304,14 +314,11 @@ export default class AppUser extends Component {
             <span className={style.logoText}>{config.app.title}</span>
           </Link>
           <div className={style.navigation}>
-            {(searchVisible || this.state.query) && (
-              <form onSubmit={this.handleSubmit} className={style.form}>
-                <div className='site-search'>
-                  <Input className={style.searchInput} type='text' label='Søk' value={this.state.query} onChange={this.handleChange.bind(this, 'query')} />
-                </div>
-              </form>
-            )}
-            <IconButton icon='search' onClick={this.toggleSearchVisible} />
+            {searchVisible && this.renderSearchForm()}
+            <span className={style.searchButton}>
+              {searchLoading && <ProgressBar type='circular' mode='indeterminate' className={style.spinner} />}
+              <IconButton icon='search' onClick={this.onSearchClick} />
+            </span>
             <IconMenu icon='more_vert' position='topRight' className={style.menu} menuRipple onSelect={this.handleOnMenuSelect}>
               <MenuItem value='tilbakemeldinger' key='tilbakemeldinger' icon='feedback' caption='Tilbakemeldinger' />
               <MenuItem value='innstillinger' key='settings' icon='settings' caption='Innstillinger' />

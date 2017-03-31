@@ -1,42 +1,50 @@
+import equal from 'deep-equal'
+
 const LOAD = 'tfk-portalen/search/LOAD'
 const LOAD_SUCCESS = 'tfk-portalen/search/LOAD_SUCCESS'
 const LOAD_FAIL = 'tfk-portalen/search/LOAD_FAIL'
+const SET_QUERY = 'tfk-portalen/search/SET_QUERY'
+const TOGGLE_SEARCH_VISIBLE = 'tfk-portalen/search/TOGGLE_SEARCH_VISIBLE'
 const RESET = 'tfk-portalen/search/RESET'
 
 const initialState = {
-  query: '',
-  size: 20,
-  items: []
+  phrase: '',
+  query: {},
+  loaded: false,
+  searchVisible: false
 }
 
 export default function reducer (state = initialState, action = {}) {
   switch (action.type) {
+    case SET_QUERY:
+      return {
+        ...state,
+        phrase: action.payload
+      }
+    case TOGGLE_SEARCH_VISIBLE:
+      return {
+        ...state,
+        searchVisible: !state.searchVisible
+      }
     case LOAD:
       return {
         ...state,
-        query: action.query,
-        page: action.page,
         loading: true
       }
     case LOAD_SUCCESS:
-      if (action.result.hits.hits && action.result.hits.hits.length > 0) {
-        return {
-          ...state,
-          loading: false,
-          items: action.result.hits.hits,
-          pages: Math.max(1, Math.ceil(action.result.hits.total / state.size)),
-          total: action.result.hits.total
-        }
-      }
       return {
         ...state,
+        data: action.result,
+        phrase: action.query.phrase || '',
+        searchVisible: true,
         loading: false,
-        error: `Ingen treff funnet for ${state.query}`
+        loaded: true
       }
     case LOAD_FAIL:
       return {
         ...state,
         loading: false,
+        loaded: true,
         error: action.error
       }
     case RESET:
@@ -46,16 +54,34 @@ export default function reducer (state = initialState, action = {}) {
   }
 }
 
-export function load (query, page = 1) {
-  return (dispatch, getState) => {
-    const {search: {size}} = getState()
-    dispatch(
-      {
-        types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-        promise: (client) => client.get(`/search?query=${query}&from=${(page - 1) * size}&size=${size}`),
-        query: query,
-        page: page
-      })
+export function isLoaded (globalState, query) {
+  return globalState.search && globalState.search.loaded && equal(globalState.search.query, query)
+}
+
+export function load (query = {}) {
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: (client) => client.get('/search', {
+      params: {
+        ...query,
+        query: query.phrase,
+        from: query.from ? query.from - 1 : 0
+      }
+    }),
+    query
+  }
+}
+
+export function setQuery (payload = '') {
+  return {
+    type: SET_QUERY,
+    payload
+  }
+}
+
+export function toggleSearchVisible () {
+  return {
+    type: TOGGLE_SEARCH_VISIBLE
   }
 }
 

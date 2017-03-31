@@ -46,7 +46,7 @@ export default (store) => {
         <Route path='/tilbakemeldinger' component={Tilbakemeldinger} />
         <Route path='/hjelp' component={Hjelp} />
         <Route path='/innstillinger' component={Innstillinger} />
-        <Route path='/sok/:query(/:page)' component={Search} />
+        <Route path='/sok' component={Search} />
         <Route path='/meldinger/:id' component={MessageView} />
       </Route>
       <Route path='/authstatus' component={AuthStatus} />

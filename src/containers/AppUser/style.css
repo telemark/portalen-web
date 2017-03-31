@@ -102,3 +102,17 @@
 .searchInput input:focus + span:after {
   background-color: #000 !important;
 }
+.searchButton {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+}
+.spinner {
+  height: calc(2.6 * var(--unit));
+  width: calc(2.6 * var(--unit));
+  opacity: .5;
+  vertical-align: middle;
+  svg circle {
+    stroke: #000;
+  }
+}
