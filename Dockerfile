@@ -1,11 +1,5 @@
-###########################################################
-#
-# Dockerfile for portalen-web
-#
-###########################################################
-
-# Setting the base to nodejs 6.10.0
-FROM node:6.10.0-alpine
+# Setting the base to nodejs 6.10.1
+FROM node:6.10.1-alpine
 
 # Maintainer
 MAINTAINER Geir Gåsodden
