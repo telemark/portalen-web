@@ -28,6 +28,9 @@ module.exports = Object.assign({
   sessionStorageUrl: process.env.SESSION_STORAGE_URL || 'https://tmp.storage.micro.t-fk.no',
   tokenSecret: process.env.TOKEN_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   encryptorSecret: process.env.ENCRYPTOR_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
+  papertrailHostName: process.env.PAPERTRAIL_HOSTNAME || 'portalen',
+  papertrailHost: process.env.PAPERTRAIL_HOST || 'logs.papertrailapp.com',
+  papertrailPort: process.env.PAPERTRAIL_PORT || 12345,
   wsProtocol: process.env.WSPROTOCOL || 'ws',
   tasks: {
     key: process.env.PORTALEN_TASKS_JWT_KEY || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',

@@ -19,9 +19,10 @@ function signin (request, reply) {
         request.server.app.cache.set(sid, {token: token}, 0, (err) => {
           if (err) {
             return reply(err)
+          } else {
+            request.cookieAuth.set({sid: sid})
+            reply(data)
           }
-          request.cookieAuth.set({sid: sid})
-          reply(data)
         })
       })
       .catch((err) => {
@@ -54,8 +55,9 @@ function loadAuth (request, reply) {
     return reply(Object.assign({}, request.auth.credentials, {
       token: request.headers.cookie
     }))
+  } else {
+    reply({})
   }
-  reply({})
 }
 
 function requireAuth (request, session, callback) {
