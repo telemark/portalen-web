@@ -22,6 +22,7 @@ const channelRoutes = require('./routes/channels')
 const validateApi = require('./helpers/validate-api')
 const good = require('good')
 
+mongoose.Promise = global.Promise
 mongoose.connect(config.databaseUri)
 
 const server = new Server()

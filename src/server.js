@@ -110,7 +110,7 @@ server.ext('onPreResponse', (request, reply) => {
         const {auth: {user}} = store.getState()
         if (!user && request.path === '/reauth') {
           const authUrl = `${config.authServiceUrl}?origin=${config.originUrl}`
-          reply.redirect(authUrl)
+          return reply.redirect(authUrl)
         }
         const component = (
           <Provider store={store} key='provider'>
