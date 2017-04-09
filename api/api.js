@@ -24,6 +24,9 @@ const good = require('good')
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.databaseUri)
+.catch(err => {
+  console.error(err.message || err)
+})
 
 const server = new Server()
 
