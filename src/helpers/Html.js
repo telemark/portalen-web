@@ -32,19 +32,6 @@ export default class Html extends Component {
           )}
           <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
           <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' />
-          {`
-          <!-- Hotjar Tracking Code for https://forsiden.portalen.t-fk.no/ -->
-          <script>
-              (function(h,o,t,j,a,r){
-                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                  h._hjSettings={hjid:480950,hjsv:5};
-                  a=o.getElementsByTagName('head')[0];
-                  r=o.createElement('script');r.async=1;
-                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                  a.appendChild(r);
-              })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-          </script>
-          `}
         </head>
         <body>
           <div id='content' dangerouslySetInnerHTML={{__html: content}} />
