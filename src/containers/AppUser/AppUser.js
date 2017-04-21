@@ -45,7 +45,7 @@ import {push} from 'react-router-redux'
 )
 export default class AppUser extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.any.isRequired,
     user: PropTypes.object,
     info: PropTypes.object,
     logout: PropTypes.func.isRequired,

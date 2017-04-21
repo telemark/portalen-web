@@ -4,7 +4,7 @@ import style from './style'
 
 export default class AppGuest extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.any.isRequired
   }
 
   render () {

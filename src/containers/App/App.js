@@ -4,6 +4,7 @@ import {asyncConnect} from 'redux-connect'
 import {isLoaded as isAuthLoaded, load as loadAuth} from 'redux/modules/auth'
 import {push, replace} from 'react-router-redux'
 import {AppUser, AppGuest} from 'containers'
+import Hotjar from 'helpers/Hotjar'
 import './style'
 
 @asyncConnect([{
@@ -27,7 +28,7 @@ import './style'
 )
 export default class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.any.isRequired,
     user: PropTypes.object,
     push: PropTypes.func.isRequired
   }
@@ -53,12 +54,14 @@ export default class App extends Component {
     if (this.props.user && this.props.user.token) {
       return (
         <AppUser>
+          <Hotjar />
           {this.props.children}
         </AppUser>
       )
     } else {
       return (
         <AppGuest>
+          <Hotjar />
           {this.props.children}
         </AppGuest>
       )
