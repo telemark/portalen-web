@@ -1,5 +1,5 @@
-# Setting the base to nodejs 6.10.1
-FROM node:6.10.1-alpine
+# Setting the base to nodejs 6.10.2
+FROM node:6.10.2-alpine
 
 # Maintainer
 MAINTAINER Geir Gåsodden
