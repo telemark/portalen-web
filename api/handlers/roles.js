@@ -5,7 +5,7 @@ const Boom = require('boom')
 
 module.exports.mapRoles = (request, reply) => {
   const company = request.query.company
-  const url = `https://roles.portalen.t-fk.win/roles?company=${company}`
+  const url = `https://roles.portalen.win/roles?company=${company}`
   fetchUrl(url).then((data) => {
     return reply(data)
   }).catch((error) => {
@@ -14,7 +14,7 @@ module.exports.mapRoles = (request, reply) => {
 }
 
 module.exports.listRoles = (request, reply) => {
-  const url = `https://roles.portalen.t-fk.win/roles`
+  const url = `https://roles.portalen.win/roles`
   fetchUrl(url).then((data) => {
     return reply(data)
   }).catch((error) => {

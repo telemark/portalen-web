@@ -28,7 +28,7 @@ npm run start
 ```
 ## Docker
 
-Sett opp evt nødvendige endringer i portale.env
+Sett opp evt nødvendige endringer i portalen.env
 
 ```bash
 $ docker-compose up
