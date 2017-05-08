@@ -1,5 +1,11 @@
 'use strict'
 
+const pkg = require('../../package.json')
+
 module.exports.ping = (request, reply) => {
-  reply('pong')
+  reply({
+    name: pkg.name,
+    version: pkg.version,
+    uptime: process.uptime()
+  })
 }

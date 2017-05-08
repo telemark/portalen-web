@@ -5,7 +5,7 @@ var Handler = require('../handlers/ping')
 const Ping = [
   {
     method: 'GET',
-    path: '/api/ping',
+    path: '/system/ping',
     config: {
       handler: Handler.ping,
       auth: false
