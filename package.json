@@ -161,7 +161,7 @@
     "webpack-isomorphic-tools": "3.0.2",
     "winston": "2.3.1",
     "winston-papertrail": "1.0.4",
-    "wreck": "12.1.0"
+    "wreck": "12.2.0"
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
