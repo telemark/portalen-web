@@ -13,6 +13,8 @@ import {
     MessageView
 } from 'containers'
 
+const Pong = () => <h1>Pong</h1>
+
 export default (store) => {
   const requireLogin = (nextState, replace, cb) => {
     function checkAuth () {
@@ -49,6 +51,7 @@ export default (store) => {
         <Route path='/sok' component={Search} />
         <Route path='/meldinger/:id' component={MessageView} />
       </Route>
+      <Route path='/ping' component={Pong} />
       <Route path='/authstatus' component={AuthStatus} />
       <Route path='*' component={NotFound} status={404} />
     </Route>
