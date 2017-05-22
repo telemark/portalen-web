@@ -34,7 +34,7 @@ export default class ApiClient {
 
         request.end((err, { body, header } = {}) => {
           const responseBody = body
-          if (__SERVER__ && header['set-cookie']) {
+          if (__SERVER__ && header && header['set-cookie']) {
             const token = header['set-cookie'][0]
             responseBody.token = token
             responseBody.authHeader = token
