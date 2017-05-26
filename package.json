@@ -192,7 +192,7 @@
     "style-loader": "0.18.1",
     "tap": "10.3.2",
     "url-loader": "0.5.8",
-    "webpack": "2.6.0",
+    "webpack": "2.6.1",
     "webpack-dev-middleware": "1.10.2",
     "webpack-hot-middleware": "2.18.0"
   },
