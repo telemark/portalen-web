@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "web frontend for portalen",
-  "version": "1.6.14",
+  "version": "1.6.15",
   "license": "MIT",
   "private": true,
   "author": "Telemark fylkeskommune (http://github.com/telemark)",
