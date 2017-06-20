@@ -135,7 +135,7 @@
     "piwik-react-router": "0.8.1",
     "postcss-cssnext": "^2.10.0",
     "postcss-import": "^10.0.0",
-    "pretty-error": "2.1.0",
+    "pretty-error": "2.1.1",
     "query-string": "^4.3.2",
     "react": "15.5.4",
     "react-addons-css-transition-group": "15.5.2",
