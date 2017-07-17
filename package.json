@@ -133,7 +133,7 @@
     "object.pick": "1.2.0",
     "piping": "0.3.2",
     "piwik-react-router": "0.8.1",
-    "postcss-cssnext": "^2.10.0",
+    "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
     "pretty-error": "2.1.1",
     "query-string": "^4.3.2",
