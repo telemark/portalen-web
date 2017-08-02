@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "web frontend for portalen",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "license": "MIT",
   "private": true,
   "author": "Telemark fylkeskommune (http://github.com/telemark)",
@@ -132,7 +132,7 @@
     "object.omit": "2.0.1",
     "object.pick": "1.2.0",
     "piping": "0.3.2",
-    "piwik-react-router": "0.9.0",
+    "piwik-react-router": "0.8.2",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
     "pretty-error": "2.1.1",
