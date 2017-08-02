@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "web frontend for portalen",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "license": "MIT",
   "private": true,
   "author": "Telemark fylkeskommune (http://github.com/telemark)",
@@ -181,7 +181,7 @@
     "express": "4.15.2",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.1",
-    "json-loader": "0.5.5",
+    "json-loader": "0.5.4",
     "nsp": "2.7.0",
     "postcss-loader": "^2.0.6",
     "react-transform-catch-errors": "1.0.2",
