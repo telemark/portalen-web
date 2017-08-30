@@ -5,12 +5,16 @@ const pkg = require('../../package.json')
 const winston = require('winston')
 require('winston-papertrail').Papertrail // eslint-disable-line no-unused-expressions
 
-const winstonPapertrail = new winston.transports.Papertrail({
-  host: config.papertrailHost,
-  port: config.papertrailPort,
-  hostname: config.papertrailHostName,
-  logFormat: (level, message) => `${level.toUpperCase()} - ${message || ''}`
-})
+function getPapertrail () {
+  return process.env.NODE_ENV !== 'production' ? {} : new winston.transports.Papertrail({
+    host: config.papertrailHost,
+    port: config.papertrailPort,
+    hostname: config.papertrailHostName,
+    logFormat: (level, message) => `${level.toUpperCase()} - ${message || ''}`
+  })
+}
+
+const winstonPapertrail = getPapertrail()
 
 const winstonConsole = new winston.transports.Console({
   formatter: options => `${new Date().toUTCString()} - ${options.level.toUpperCase()} - ${(options.message ? options.message : '')}`
