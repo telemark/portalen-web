@@ -12,6 +12,7 @@ function getMyIp (request) {
 module.exports.shortcuts = (request, reply) => {
   const roles = request.query.roles.split(',').join('|')
   const url = `https://shortcuts.portalen.win/shortcuts?roles=${roles}${getMyIp(request)}`
+  logger('info', ['shortcuts', JSON.stringify(request.headers)])
   logger('info', ['shortcuts', url])
   fetchUrl(url).then((data) => {
     return reply(data)
