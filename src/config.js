@@ -41,7 +41,7 @@ module.exports = Object.assign({
     links: process.env.API_LINKS || '/api/links?roles={rolesJoined}',
     userRoles: process.env.API_ROLES_USER || '/api/roles/map?company={company}',
     roles: process.env.API_ROLES || '/api/roles/list',
-    shortcuts: process.env.API_SHORTCUTS || '/api/shortcuts?roles={rolesJoined}',
+    shortcuts: process.env.API_SHORTCUTS || '/api/shortcuts?roles={rolesJoined}&id={ip}',
     tasks: process.env.API_TASKS || null,
     content: process.env.API_CONTENT || '/api/content/{userId}?roles={rolesJoined}',
     search: process.env.API_SEARCH || 'https://search.portalen.t-fk.no/api',

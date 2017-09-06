@@ -15,7 +15,7 @@ function customizeRoles (items, userSubscription, roles) {
 }
 
 function readAll (request, reply) {
-  const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), request.auth.credentials)
+  const makeUrlFunc = makeUrl(request.server.info.uri.toLowerCase(), {...request.auth.credentials, ip: request.headers['x-forwarded-for']})
   const errorFunction = (error) => reply({error: `Lasting av ${request.query.infoType} feilet`, errorObject: error}).code(403)
   switch (request.query.infoType) {
     case 'links':
