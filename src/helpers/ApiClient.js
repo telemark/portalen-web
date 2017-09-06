@@ -35,9 +35,11 @@ export default class ApiClient {
         request.end((err, { body, header } = {}) => {
           const responseBody = body
           if (__SERVER__ && header && header['set-cookie']) {
-            const token = header['set-cookie'][0]
-            responseBody.token = token
-            responseBody.authHeader = token
+            const cookie = header['set-cookie'][0]
+            const token = cookie.split(';')
+            responseBody.token = `${token[0]};`
+            console.log('server token', token)
+            responseBody.authHeader = cookie
           }
           if (err && err.timeout) {
             return reject(new Error(`Lasting av ${request.url} timet ut`))

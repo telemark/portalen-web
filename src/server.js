@@ -50,6 +50,9 @@ server.register([
     throw err
   }
   server.start(() => {
+    server.listener.on('upgrade', (req, socket, head) => {
+      proxy.ws(req, socket, head)
+    })
     console.info('==> ✅  Server is listening')
     console.info('==> 🌎  Go to ' + server.info.uri.toLowerCase())
   })
@@ -59,7 +62,7 @@ proxy.on('error', (error, req, res) => {
   console.error('proxy error', error)
 })
 
-server.ext('onPreResponse', (request, reply) => {
+server.ext('onRequest', (request, reply) => {
   if (request.path.substring(0, 4) === '/api') {
     request.raw.req.url = request.raw.req.url.replace('/api', '')
     return proxy.web(request.raw.req, request.raw.res, {target: targetUrl})

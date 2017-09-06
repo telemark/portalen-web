@@ -3,7 +3,7 @@ require('babel-polyfill')
 const environment = {
   development: {
     isProduction: false,
-    wsFullUrl: 'ws://localhost:3030'
+    wsFullUrl: 'ws://localhost:3000/api'
   },
   production: {
     isProduction: true,
