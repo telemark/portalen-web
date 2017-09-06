@@ -38,7 +38,6 @@ export default class ApiClient {
             const cookie = header['set-cookie'][0]
             const token = cookie.split(';')
             responseBody.token = `${token[0]};`
-            console.log('server token', token)
             responseBody.authHeader = cookie
           }
           if (err && err.timeout) {
