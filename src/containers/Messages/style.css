@@ -57,7 +57,7 @@
   white-space: normal;
 }
 .cardList {
-  li > span {
+  & li > span {
     align-items: flex-start;
     & > div {
       /* Fix ie overflow */
@@ -66,8 +66,8 @@
   }
 }
 .htmlWrapper {
-  ul,
-  ol {
+  & ul,
+  & ol {
     margin-left: 1em;
   }
 }
