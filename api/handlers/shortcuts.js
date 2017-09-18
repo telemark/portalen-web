@@ -12,6 +12,7 @@ module.exports.shortcuts = (request, reply) => {
   fetchUrl(url).then((data) => {
     return reply(data)
   }).catch((error) => {
+    logger('error', ['shortcuts', error])
     return reply(Boom.internal(error))
   })
 }
