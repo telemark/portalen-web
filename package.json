@@ -139,7 +139,7 @@
     "query-string": "^4.3.4",
     "react": "16.0.0",
     "react-addons-css-transition-group": "15.6.0",
-    "react-dom": "15.6.2",
+    "react-dom": "16.0.0",
     "react-flexbox-grid": "1.1.5",
     "react-helmet": "5.2.0",
     "react-inline-css": "2.3.1",
