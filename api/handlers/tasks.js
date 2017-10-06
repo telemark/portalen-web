@@ -7,7 +7,7 @@ const tasksUrl = config.tasks.url
 const logger = require('../../src/lib/logger')
 
 export function getTasks (request) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     const user = request.auth.credentials.userId
     const name = request.auth.credentials.cn
     const url = tasksUrl + '/' + user
@@ -30,14 +30,13 @@ export function getTasks (request) {
     }
 
     logger('info', ['tasks', 'getTasks', 'user', user])
-    Wreck.get(url, options, (error, response, payload) => {
-      if (error) {
-        logger('error', ['tasks', 'getTasks', 'user', user, error])
-        reject(error.message || error)
-      } else {
-        logger('info', ['tasks', 'getTasks', 'user', user, 'success'])
-        resolve(payload)
-      }
-    })
+    try {
+      const { payload } = await Wreck.get(url, options)
+      logger('info', ['tasks', 'getTasks', 'user', user, 'success'])
+      resolve(payload)
+    } catch (error) {
+      logger('error', ['tasks', 'getTasks', 'user', user, error])
+      reject(error)
+    }
   })
 }
