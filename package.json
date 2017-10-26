@@ -179,7 +179,7 @@
     "eslint-plugin-react": "7.4.0",
     "eslint-plugin-standard": "3.0.1",
     "express": "^4.15.4",
-    "extract-text-webpack-plugin": "3.0.1",
+    "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "^1.1.5",
     "json-loader": "^0.5.7",
     "nsp": "2.8.1",
