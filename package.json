@@ -127,7 +127,7 @@
     "moment": "2.19.0",
     "mongoose": "^4.11.10",
     "mongoose-search-plugin": "0.1.2",
-    "nes": "^6.4.3",
+    "nes": "^7.0.0",
     "normalize.css": "7.0.0",
     "object.omit": "2.0.1",
     "object.pick": "1.3.0",
