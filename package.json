@@ -136,7 +136,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
     "pretty-error": "2.1.1",
-    "query-string": "^4.3.4",
+    "query-string": "^5.0.1",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "15.6.0",
     "react-dom": "^15.6.1",
