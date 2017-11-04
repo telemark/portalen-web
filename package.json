@@ -121,7 +121,7 @@
     "history": "4.7.2",
     "http-proxy": "1.16.2",
     "immutability-helper": "^2.3.0",
-    "inert": "^4.2.1",
+    "inert": "^5.0.1",
     "invariant": "2.2.2",
     "jsonwebtoken": "8.1.0",
     "moment": "2.19.0",
