@@ -182,7 +182,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "^1.1.5",
     "json-loader": "^0.5.7",
-    "nsp": "2.8.1",
+    "nsp": "3.0.0",
     "postcss-loader": "^2.0.6",
     "react-transform-catch-errors": "1.0.2",
     "react-transform-hmr": "1.0.4",
