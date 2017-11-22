@@ -108,7 +108,7 @@
     "better-npm-run": "0.1.0",
     "boom": "^7.1.0",
     "classnames": "^2.2.5",
-    "concurrently": "3.5.0",
+    "concurrently": "3.5.1",
     "deep-equal": "^1.0.1",
     "flexboxgrid": "6.3.1",
     "good": "^7.3.0",
