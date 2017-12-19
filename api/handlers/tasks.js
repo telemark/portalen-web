@@ -23,7 +23,7 @@ export function getTasks (request) {
     const token = jwt.sign(data, jwtKey, tokenOptions)
     const options = {
       json: true,
-      timeout: 1000,
+      timeout: 10000,
       headers: {
         Authorization: token
       }
