@@ -2,6 +2,7 @@
 
 html {
   font-size: 62.5%;
+  font-family: "Open sans", Arial, sans-serif;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: "Open sans", Arial, sans-serif;
   font-size: 1.6rem;
   -webkit-touch-callout: none;
   background: var(--tfk-bg-page);
@@ -87,6 +88,7 @@ input[required]:-moz-ui-invalid {
 }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-family: Arial, sans-serif;
   font-size: calc(5.6 * var(--unit));
   font-weight: 400;
   line-height: 1.35;
@@ -98,21 +100,25 @@ h1, h2, h3, h4 {
 }
 
 h1 {
+  font-family: Arial, sans-serif;
   font-size: calc(5.6 * var(--unit));
   line-height: 1.35;
 }
 
 h2 {
+  font-family: Arial, sans-serif;
   font-size: calc(4.5 * var(--unit));
   line-height: calc(4.8 * var(--unit));
 }
 
 h3 {
+  font-family: Arial, sans-serif;
   font-size: calc(2.4 * var(--unit));
   line-height: calc(3.2 * var(--unit));
 }
 
 h4 {
+  font-family: Arial, sans-serif;
   font-size: calc(2 * var(--unit));
   line-height: 1;
 }
