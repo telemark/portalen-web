@@ -1,5 +1,7 @@
 require('babel-polyfill')
-
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const environment = {
   development: {
     isProduction: false,
