@@ -16,6 +16,9 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-connect'
 import createHistory from 'react-router/lib/createMemoryHistory'
 import {Provider} from 'react-redux'
 import getRoutes from './routes'
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const good = require('good')
 const pretty = new PrettyError()
 const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort
