@@ -97,7 +97,7 @@ export default class Home extends Component {
 
   renderRemoveBtn (set, key) {
     return (
-      <Button icon='visibility_off' label='Skjul' onClick={this.removeItem.bind(this, set, key)} />
+      <Button icon='visibility_off' label='' primary className={style.linkBtnFix} onClick={this.removeItem.bind(this, set, key)} />
     )
   }
 
@@ -134,7 +134,7 @@ export default class Home extends Component {
                 <div className={style.htmlContent} dangerouslySetInnerHTML={{__html: item.summary}} />
               </CardText>
               <CardActions className={style.cardActions}>
-                <Button href={item.url} label='Les mer' primary className={style.linkBtnFix} />
+                <Button href={item.url} label='Les mer' className={style.linkBtnFix} />
                 {this.renderRemoveBtn('news', item.url)}
               </CardActions>
             </Card>
