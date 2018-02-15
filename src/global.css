@@ -69,3 +69,7 @@
   font-size: calc(1.4 * var(--unit));
   color: #999;
 }
+
+.loveRed {
+  color: #e30438 !important;
+}

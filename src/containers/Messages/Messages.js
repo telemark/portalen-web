@@ -226,9 +226,9 @@ export default class Messages extends Component {
     const {user} = this.props
     const like = item.likes.find((item) => item === user.userId)
     if (like) {
-      return <IconButton key='1' icon='favorite' onClick={this.handleUnlike.bind(this, item._id)} accent />
+      return <IconButton key='1' className={'loveRed'} icon='favorite' onClick={this.handleUnlike.bind(this, item._id)} />
     } else {
-      return <IconButton key='1' icon='favorite_border' onClick={this.handleLike.bind(this, item._id)} accent />
+      return <IconButton key='1' className={'loveRed'} icon='favorite_border' onClick={this.handleLike.bind(this, item._id)} />
     }
   }
 

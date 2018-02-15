@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {Card, CardText, CardTitle, CardActions} from 'react-toolbox/lib/card'
 import {List, ListItem} from 'react-toolbox/lib/list'
-import Button from 'react-toolbox/lib/button'
+import {Button, IconButton} from 'react-toolbox/lib/button'
 import FontIcon from 'react-toolbox/lib/font_icon'
 import Snackbar from 'react-toolbox/lib/snackbar'
 
@@ -97,7 +97,7 @@ export default class Home extends Component {
 
   renderRemoveBtn (set, key) {
     return (
-      <Button icon='visibility_off' label='' primary className={style.linkBtnFix} onClick={this.removeItem.bind(this, set, key)} />
+      <IconButton icon='visibility_off' accent onClick={this.removeItem.bind(this, set, key)} />
     )
   }
 
