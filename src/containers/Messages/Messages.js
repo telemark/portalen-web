@@ -11,7 +11,7 @@ import {Button, IconButton} from 'react-toolbox/lib/button'
 import Input from 'react-toolbox/lib/input'
 import {Row, Col} from 'react-flexbox-grid'
 import ReactMarkdown from 'react-markdown'
-import style from './style'
+import style from './style.css'
 import moment from 'moment'
 import 'moment/locale/nb.js'
 import pick from 'object.pick'
@@ -226,9 +226,9 @@ export default class Messages extends Component {
     const {user} = this.props
     const like = item.likes.find((item) => item === user.userId)
     if (like) {
-      return <IconButton key='1' className={'loveRed'} icon='favorite' onClick={this.handleUnlike.bind(this, item._id)} />
+      return <IconButton key='1' className={style.loveRed} icon='favorite' onClick={this.handleUnlike.bind(this, item._id)} />
     } else {
-      return <IconButton key='1' className={'loveRed'} icon='favorite_border' onClick={this.handleLike.bind(this, item._id)} />
+      return <IconButton key='1' className={style.loveRed} icon='favorite_border' onClick={this.handleLike.bind(this, item._id)} />
     }
   }
 
