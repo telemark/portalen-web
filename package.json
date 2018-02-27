@@ -172,7 +172,7 @@
     "babel-plugin-react-transform": "3.0.0",
     "babel-plugin-typecheck": "3.9.0",
     "clean-webpack-plugin": "0.1.18",
-    "css-loader": "0.28.9",
+    "css-loader": "0.28.10",
     "eslint": "^4.6.1",
     "eslint-config-standard": "10.2.1",
     "eslint-config-standard-react": "5.0.0",
