@@ -4,6 +4,7 @@ import omit from 'object.omit'
 import Message from '../models/Message'
 import config from '../../src/config'
 import defaultMessage from '../../src/helpers/defaultMessage'
+const logger = require('../../src/lib/logger')
 
 function searchParams (roles = [], userId = '') {
   return {
@@ -99,6 +100,8 @@ function readAll (request, reply) {
 export function createMessage (payload, request) {
   const template = defaultMessage()
   return new Promise((resolve, reject) => {
+    const userId = request.auth.credentials.userId
+    logger('info', ['messages', 'createMessage', 'user', userId, 'start'])
     new Message({
       ...template,
       ...pick(payload, ['title', 'text', 'user', 'role']),
@@ -107,12 +110,16 @@ export function createMessage (payload, request) {
     })
     .save()
     .then((doc) => {
+      logger('info', ['messages', 'createMessage', 'user', userId, 'success', doc._id])
       if (shouldShowMessage(doc)) {
         publishMessage(request, doc)
       }
       resolve(doc)
     })
-    .catch((err) => reject(err))
+    .catch((err) => {
+      logger('error', ['messages', 'createMessage', 'user', userId, err])
+      reject(err)
+    })
   })
 }
 
@@ -159,6 +166,8 @@ function update (request, reply) {
 }
 
 function remove (request, reply) {
+  const userId = request.auth.credentials.userId
+  logger('info', ['messages', 'remove', 'user', userId, 'message', request.params.id, 'start'])
   Message.findOne({_id: request.params.id})
   .then((doc) => {
     return doc.remove()
@@ -170,6 +179,7 @@ function remove (request, reply) {
     }
   })
   .catch((err) => {
+    logger('error', ['messages', 'remove', 'user', userId, 'message', request.params.id, error])
     reply(err).code(400)
   })
 }

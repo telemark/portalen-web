@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {Card, CardText, CardTitle, CardActions} from 'react-toolbox/lib/card'
 import {List, ListItem} from 'react-toolbox/lib/list'
-import Button from 'react-toolbox/lib/button'
+import {Button, IconButton} from 'react-toolbox/lib/button'
 import FontIcon from 'react-toolbox/lib/font_icon'
 import Snackbar from 'react-toolbox/lib/snackbar'
 
@@ -97,67 +97,61 @@ export default class Home extends Component {
 
   renderRemoveBtn (set, key) {
     return (
-      <Button icon='visibility_off' label='Skjul' onClick={this.removeItem.bind(this, set, key)} />
+      <IconButton icon='visibility_off' accent onClick={this.removeItem.bind(this, set, key)} />
     )
   }
 
   renderAds () {
     const {info: {ads}} = this.props
     return (
-      <Row>
-        <Col xs={12}>
-          {ads && ads.map((item, i) => {
-            const content = (item.matrixData && item.matrixData.length > 0 && item.matrixData[0].htmlContent) ? item.matrixData[0].htmlContent : item.description
-            return (
-              <Card key={i} className={style.card}>
-                <div className={style.withRemove}>
-                  <div className={style.removeContainer}>
-                    {this.renderRemoveBtn('ads', item.url)}
-                  </div>
-                  <div className={style.htmlContentAd} dangerouslySetInnerHTML={{__html: content}} />
+      <div>
+        {ads && ads.map((item, i) => {
+          const content = (item.matrixData && item.matrixData.length > 0 && item.matrixData[0].htmlContent) ? item.matrixData[0].htmlContent : item.description
+          return (
+            <Card key={i} className={style.card}>
+              <div className={style.withRemove}>
+                <div className={style.removeContainer}>
+                  {this.renderRemoveBtn('ads', item.url)}
                 </div>
-              </Card>
-            )
-          })}
-        </Col>
-      </Row>
+                <div className={style.htmlContentAd} dangerouslySetInnerHTML={{__html: content}} />
+              </div>
+            </Card>
+          )
+        })}
+      </div>
     )
   }
 
   renderNews () {
     const {info: {news}} = this.props
     return (
-      <Row className={style.equelHeightRow}>
+      <div>
         {news && news.map((item, i) => {
           return (
-            <Col key={i} xs={12} sm={6} md={4} className={style.equelHeightCol}>
-              <Card className={style.card}>
-                <CardText className={style.cardTextEqualHeight}>
-                  <h4 className={style.newstitle}>{item.title}</h4>
-                  <div className={style.htmlContent} dangerouslySetInnerHTML={{__html: item.summary}} />
-                </CardText>
-                <CardActions className={style.cardActions}>
-                  <Button href={item.url} label='Les mer' primary className={style.linkBtnFix} />
-                  {this.renderRemoveBtn('news', item.url)}
-                </CardActions>
-              </Card>
-            </Col>
+            <Card key={i} className={style.card}>
+              <CardText className={style.cardTextEqualHeight}>
+                <h4 className={style.newstitle}>{item.title}</h4>
+                <div className={style.htmlContent} dangerouslySetInnerHTML={{__html: item.summary}} />
+              </CardText>
+              <CardActions className={style.cardActions}>
+                <Button href={item.url} label='Les mer' className={style.linkBtnFix} />
+                {this.renderRemoveBtn('news', item.url)}
+              </CardActions>
+            </Card>
           )
         })}
         {!news && (
-          <Col xs={12} sm={6} md={4} className={`${style.equelHeightCol} ${style.loadingState}`}>
-            <Card className={style.card}>
-              <CardText className={style.cardTextEqualHeight}>
-                <h4 className={style.newstitle}>Nyheter</h4>
-                <div className={style.placeholderImage}>
-                  <FontIcon value='photo' className={style.icon} />
-                </div>
-                <p>Laster inn</p>
-              </CardText>
-            </Card>
-          </Col>
+          <Card className={`${style.card} ${style.loadingState}`}>
+            <CardText className={style.cardTextEqualHeight}>
+              <h4 className={style.newstitle}>Nyheter</h4>
+              <div className={style.placeholderImage}>
+                <FontIcon value='photo' className={style.icon} />
+              </div>
+              <p>Laster inn</p>
+            </CardText>
+          </Card>
         )}
-      </Row>
+      </div>
     )
   }
 
@@ -172,15 +166,15 @@ export default class Home extends Component {
         <Row className={style.xsreverse}>
           <Col xs={12} sm={6}>
             {this.renderTasks()}
-          </Col>
-          <Col xs={12} sm={6}>
             <Card className={style.card}>
               {user && user.token && roles && <Messages />}
             </Card>
           </Col>
+          <Col xs={12} sm={6}>
+            {this.renderAds()}
+            {this.renderNews()}
+          </Col>
         </Row>
-        {this.renderAds()}
-        {this.renderNews()}
         {errorToShow && <ErrorSnackBar {...errorToShow} dismiss={dismissError} />}
       </Grid>
     )

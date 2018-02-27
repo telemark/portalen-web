@@ -47,3 +47,6 @@ dist/
 
 # Lockfiles
 package-lock.json
+
+# .env
+.env
