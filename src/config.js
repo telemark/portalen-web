@@ -11,6 +11,7 @@ const environment = {
 }[process.env.NODE_ENV || 'development']
 
 module.exports = Object.assign({
+  contentApiUrl: 'https://content.portalen.win/api/content',
   jwtSecret: process.env.JWT_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
   piwikURL: process.env.PIWIK_URL || 'https://piwik.service.t-fk.no',
   piwikSiteID: process.env.PIWIK_SITE_ID || 1,
