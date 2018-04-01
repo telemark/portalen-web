@@ -120,7 +120,7 @@
     "h2o2": "6.1.0",
     "hapi": "16.6.2",
     "hapi-auth-cookie": "7.0.0",
-    "hapi-auth-jwt2": "7.4.1",
+    "hapi-auth-jwt2": "8.1.0",
     "history": "4.7.2",
     "http-proxy": "1.16.2",
     "immutability-helper": "2.6.6",
