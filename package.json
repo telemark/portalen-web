@@ -196,7 +196,7 @@
     "style-loader": "0.20.3",
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
-    "webpack-dev-middleware": "^2.0.1",
+    "webpack-dev-middleware": "^3.1.2",
     "webpack-hot-middleware": "^2.18.2"
   },
   "engines": {
