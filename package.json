@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "web frontend for portalen",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "license": "MIT",
   "private": true,
   "author": "Telemark fylkeskommune (http://github.com/telemark)",
@@ -192,14 +192,15 @@
     "redbox-react": "1.5.0",
     "redux-devtools": "3.4.1",
     "standard": "11.0.1",
-    "tap": "^11.0.0",
     "style-loader": "0.21.0",
+    "tap": "^11.0.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.1.1",
+    "webpack": "^3.1.0",
+    "webpack-cli": "2.0.14",
     "webpack-dev-middleware": "^2.0.1",
     "webpack-hot-middleware": "^2.18.2"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "8.11.1"
   }
 }
