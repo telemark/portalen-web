@@ -162,7 +162,7 @@
     "superagent": "3.8.2",
     "valid-url": "1.0.9",
     "webpack-isomorphic-tools": "3.0.5",
-    "winston": "2.4.1",
+    "winston": "2.4.2",
     "winston-papertrail": "1.0.5",
     "wreck": "14.0.0"
   },
