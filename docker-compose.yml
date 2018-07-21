@@ -1,5 +1,5 @@
 mongoserver:
-  image: mongo:3.4.1
+  image: mongo:3.2.20
 
 portalen_web:
   image: telemark/portalen-web:latest@sha256:cf8bd1f457b748de03a8fcb4ce9f779eb6d5d6a22a714ee0fc25da8f737cab58
