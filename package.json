@@ -186,7 +186,7 @@
     "file-loader": "2.0.0",
     "json-loader": "0.5.7",
     "nsp": "3.2.1",
-    "postcss-loader": "2.1.6",
+    "postcss-loader": "3.0.0",
     "react-transform-catch-errors": "1.0.2",
     "react-transform-hmr": "1.0.4",
     "redbox-react": "1.6.0",
