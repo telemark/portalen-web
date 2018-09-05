@@ -192,7 +192,7 @@
     "redbox-react": "1.6.0",
     "redux-devtools": "3.4.1",
     "standard": "11.0.1",
-    "style-loader": "0.22.1",
+    "style-loader": "0.23.0",
     "tap": "12.0.1",
     "url-loader": "1.1.1",
     "webpack": "4.17.1",
