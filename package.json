@@ -1,7 +1,7 @@
 {
   "name": "portalen-web",
   "description": "web frontend for portalen",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "license": "MIT",
   "private": true,
   "author": "Telemark fylkeskommune (http://github.com/telemark)",
@@ -172,7 +172,7 @@
     "babel-plugin-react-transform": "3.0.0",
     "babel-plugin-typecheck": "3.9.0",
     "clean-webpack-plugin": "0.1.19",
-    "css-loader": "0.28.10",
+    "css-loader": "0.28.11",
     "eslint": "4.19.1",
     "eslint-config-standard": "11.0.0",
     "eslint-config-standard-react": "6.0.0",
