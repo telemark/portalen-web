@@ -44,7 +44,7 @@ module.exports = Object.assign({
     shortcuts: process.env.API_SHORTCUTS || '/api/shortcuts?roles={rolesJoined}&ip={ip}',
     tasks: process.env.API_TASKS || null,
     content: process.env.API_CONTENT || '/api/content/{userId}?roles={rolesJoined}',
-    search: process.env.API_SEARCH || 'https://search.portalen.t-fk.no/api',
+    search: process.env.API_SEARCH || 'https://search.service.t-fk.no/api',
     jwtSecret: process.env.API_JWT_SECRET || 'Louie Louie, oh no, I got to go Louie Louie, oh no, I got to go',
     defaults: {
       company: process.env.DEFAULTS_COMPANY || 'Sentraladministrasjonen',

@@ -57,9 +57,9 @@ export default class Search extends Component {
         }
       case 'employee':
         return {
-          title: item._source.body.title,
-          text: `${item._source.body.data.positions[0].info} - ${item._source.body.description}`,
-          url: item._source.body.url
+          title: item._source.title,
+          text: `${item._source.positions[0].info} - ${item._source.description}`,
+          url: item._source.url
         }
       default:
         return {

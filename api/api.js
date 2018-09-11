@@ -24,9 +24,9 @@ const good = require('good')
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.databaseUri)
-.catch(err => {
-  console.error(err.message || err)
-})
+  .catch(err => {
+    console.error(err.message || err)
+  })
 
 const server = new Server()
 
@@ -66,8 +66,8 @@ server.register([{register: good, options: goodOptions}, h2o2, HapiAuthCookie, h
   })
 
   server.auth.strategy('jwt', 'jwt', {
-    key: config.api.jwtSecret,          // Never Share your secret key
-    validateFunc: validateApi,            // validate function defined above
+    key: config.api.jwtSecret, // Never Share your secret key
+    validateFunc: validateApi, // validate function defined above
     verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
   })
 

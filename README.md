@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/telemark/portalen-web.svg?branch=master)](https://travis-ci.org/telemark/portalen-web)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/portalen-web.svg)](https://greenkeeper.io/)
 
 # portalen-web
 
@@ -37,5 +36,3 @@ $ docker-compose up
 ## License
 
 [MIT](LICENSE)
-
-![Robohash image of portalen-web](https://robots.kebabstudios.party/portalen-web.png "Robohash image of portalen-web")
