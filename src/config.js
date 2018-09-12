@@ -61,7 +61,7 @@ module.exports = Object.assign({
       value: 'employees',
       title: 'Ansatte'
     }, {
-      value: 'wwwtelemarkno',
+      value: 'www',
       title: 'www.telemark.no'
     }, {
       value: 'portaleninfo',
