@@ -128,7 +128,7 @@
     "invariant": "2.2.4",
     "jsonwebtoken": "8.3.0",
     "moment": "2.22.1",
-    "mongoose": "5.2.15",
+    "mongoose": "5.2.16",
     "mongoose-search-plugin": "0.1.2",
     "nes": "6.5.1",
     "normalize.css": "8.0.0",
