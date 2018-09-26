@@ -2,7 +2,7 @@ mongoserver:
   image: mongo:3.7.9
 
 portalen_web:
-  image: telemark/portalen-web:latest@sha256:7377c0dd5d956d955dc94ccbf896e0419f98fb2d3c236bdd7e37e64e265a0a8d
+  image: telemark/portalen-web:latest@sha256:84d3322613dbb3f68107bb6de2df84c1702dae042255773ad4865fed953f1651
   container_name: portalen_web
   env_file: portalen.env
   restart: always
