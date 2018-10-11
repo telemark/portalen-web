@@ -199,6 +199,6 @@
     "webpack-hot-middleware": "2.24.2"
   },
   "engines": {
-    "node": "10.11.0"
+    "node": "10.12.0"
   }
 }
