@@ -126,7 +126,7 @@
     "immutability-helper": "2.8.1",
     "inert": "4.2.1",
     "invariant": "2.2.4",
-    "jsonwebtoken": "8.3.0",
+    "jsonwebtoken": "8.4.0",
     "moment": "2.22.1",
     "mongoose": "5.3.11",
     "mongoose-search-plugin": "0.1.2",
