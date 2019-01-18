@@ -118,7 +118,7 @@
     "good-console": "7.1.0",
     "good-squeeze": "5.0.2",
     "h2o2": "6.1.0",
-    "hapi": "16.7.0",
+    "hapi": "18.0.0",
     "hapi-auth-cookie": "7.0.0",
     "hapi-auth-jwt2": "7.4.1",
     "history": "4.7.2",
