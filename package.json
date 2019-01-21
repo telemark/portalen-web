@@ -127,7 +127,7 @@
     "inert": "4.2.1",
     "invariant": "2.2.4",
     "jsonwebtoken": "8.4.0",
-    "moment": "2.23.0",
+    "moment": "2.24.0",
     "mongoose": "5.4.5",
     "mongoose-search-plugin": "0.1.2",
     "nes": "6.5.1",
