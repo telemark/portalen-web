@@ -168,7 +168,7 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.1",
-    "babel-loader": "7.1.5",
+    "babel-loader": "8.0.5",
     "babel-plugin-react-transform": "3.0.0",
     "babel-plugin-typecheck": "3.9.0",
     "clean-webpack-plugin": "2.0.1",
