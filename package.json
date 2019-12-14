@@ -121,7 +121,7 @@
     "hapi": "16.7.0",
     "hapi-auth-cookie": "7.1.0",
     "hapi-auth-jwt2": "7.4.1",
-    "history": "4.9.0",
+    "history": "4.10.1",
     "http-proxy": "1.17.0",
     "immutability-helper": "3.0.0",
     "inert": "4.2.1",
