@@ -1,9 +1,5 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "assignees": [
-    "maccyber",
-    "Sherex"
+    "github>telemark/renovate-config"
   ]
 }
